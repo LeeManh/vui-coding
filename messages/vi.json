@@ -1,0 +1,16 @@
+{
+  "Header": {
+    "login": "Đăng nhập"
+  },
+  "UserMenu": {
+    "profile": "Hồ sơ",
+    "history": "Lịch sử hoạt động",
+    "settings": "Cài đặt",
+    "logout": "Đăng xuất",
+    "dashboard": "Bảng điều khiển"
+  },
+  "Navbar": {
+    "home": "Trang chủ",
+    "archive": "Bài viết"
+  }
+}

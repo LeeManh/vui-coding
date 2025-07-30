@@ -1,6 +1,7 @@
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage, AvatarProps } from "../Avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
 import { cn } from "@/lib/utils";
+import { AvatarProps } from "@radix-ui/react-avatar";
 
 interface AvatarUserProps extends AvatarProps {
   avatar?: string | null;

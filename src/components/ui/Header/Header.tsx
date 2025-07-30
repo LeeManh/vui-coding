@@ -7,9 +7,11 @@ import UserMenu from "../UserMenu";
 import { ROUTE_PATHS } from "@/constants/route-paths.constant";
 import { useAuth } from "@/contexts/AuthContext";
 import SearchPost from "../SearchPost";
+import { useTranslations } from "next-intl";
 
 const Header = () => {
   const { isAuthenticated } = useAuth();
+  const t = useTranslations("Header");
 
   return (
     <header className="border-b ">
@@ -23,7 +25,7 @@ const Header = () => {
             <UserMenu />
           ) : (
             <Link href={ROUTE_PATHS.AUTH.SIGN_IN}>
-              <Button variant="ghost">Đăng nhập</Button>
+              <Button variant="ghost">{t("login")}</Button>
             </Link>
           )}
         </div>
