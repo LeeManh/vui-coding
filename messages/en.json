@@ -1,0 +1,16 @@
+{
+  "Header": {
+    "login": "Login"
+  },
+  "UserMenu": {
+    "profile": "Profile",
+    "history": "History",
+    "settings": "Settings",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
+  },
+  "Navbar": {
+    "home": "Home",
+    "archive": "Archive"
+  }
+}
