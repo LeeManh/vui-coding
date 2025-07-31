@@ -8,6 +8,7 @@ import { ROUTE_PATHS } from "@/constants/route-paths.constant";
 import { useAuth } from "@/contexts/AuthContext";
 import SearchPost from "../SearchPost";
 import { useTranslations } from "next-intl";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 const Header = () => {
   const { isAuthenticated } = useAuth();
@@ -20,6 +21,8 @@ const Header = () => {
 
         <div className="flex items-center space-x-4">
           <SearchPost />
+
+          <LanguageSwitcher />
 
           {isAuthenticated ? (
             <UserMenu />
