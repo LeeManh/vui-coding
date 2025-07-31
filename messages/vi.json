@@ -12,5 +12,9 @@
   "Navbar": {
     "home": "Trang chủ",
     "archive": "Bài viết"
+  },
+  "LanguageSwitcher": {
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt"
   }
 }

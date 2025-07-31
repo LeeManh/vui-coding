@@ -12,5 +12,9 @@
   "Navbar": {
     "home": "Home",
     "archive": "Archive"
+  },
+  "LanguageSwitcher": {
+    "english": "English",
+    "vietnamese": "Vietnamese"
   }
 }
