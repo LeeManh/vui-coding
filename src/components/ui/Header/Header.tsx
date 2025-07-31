@@ -9,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import SearchPost from "../SearchPost";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
+import ThemeSwitcher from "../ThemeSwitcher";
 
 const Header = () => {
   const { isAuthenticated } = useAuth();
@@ -23,6 +24,8 @@ const Header = () => {
           <SearchPost />
 
           <LanguageSwitcher />
+
+          <ThemeSwitcher />
 
           {isAuthenticated ? (
             <UserMenu />
