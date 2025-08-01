@@ -1,8 +1,8 @@
-import { MainHeader } from "@/components/ui/Header";
 import React from "react";
-import Navbar from "@/components/ui/Navbar";
+import { MainHeader } from "@/components/layouts/header";
+import { Navbar } from "@/components/layouts/navbar";
+import { Footer } from "@/components/layouts/footer";
 import { cn } from "@/lib/utils";
-import Footer from "../ui/Footer/Footer";
 
 type ContainerType = "default" | "sm";
 

@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import AvatarUser from "../ui/AvatarUser";
-import { Button } from "@/components/ui/Button";
-import Divider from "@/components/ui/Divider";
+import { AvatarUser } from "@/components/shared/avatar-user";
+import { Button } from "@/components/shared/Button";
+import Divider from "@/components/shared/Divider";
 import { Bookmark, Heart, MessageCircle, Share } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 import { formatFullDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
-import { useOptimisticPostLike } from "@/hooks/useOptimisticPostLike";
-import { ReactionTarget } from "@/types/reaction.type";
+import { useOptimisticPostLike } from "@/hooks/use-optimistic-post-like";
+import { ReactionTarget } from "@/types/reaction";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { QUERY_KEYS } from "@/constants/query-keys.constant";
-import { getPostDetail } from "@/apis/post.api";
+import { QUERY_KEYS } from "@/constants/query-keys";
+import { getPostDetail } from "@/apis/post";
 
 interface PostDetailsSectionProps {
   postId: string;

@@ -1,5 +1,5 @@
-import BlogSidebar from "@/components/ui/Sidebar/BlogSidebar";
-import Divider from "@/components/ui/Divider";
+import { BlogSidebar } from "@/components/layouts/sidebar";
+import Divider from "@/components/shared/Divider";
 import PostList from "@/components/home/PostList";
 import PostListFeatured from "@/components/home/PostListFeatured";
 import PostListPopular from "@/components/home/PostListPopular";

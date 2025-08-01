@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { getPosts } from "@/apis/post.api";
-import { QUERY_KEYS } from "@/constants/query-keys.constant";
+import { getPosts } from "@/apis/post";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import PostCardPopular, { PostCardPopularSkeleton } from "@/components/ui/Posts/PostCardPopular";
-import { SortType } from "@/types/common.type";
+import { PostCardPopular, PostCardPopularSkeleton } from "@/components/shared/posts";
+import { SortType } from "@/types/common";
 import { useRouter } from "next/navigation";
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
+import { ROUTE_PATHS } from "@/constants/route-paths";
 
 const paddings: Record<number, string> = {
   0: "pr-4",

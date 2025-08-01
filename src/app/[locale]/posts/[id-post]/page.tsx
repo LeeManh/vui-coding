@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Divider from "@/components/ui/Divider";
+import Divider from "@/components/shared/Divider";
 import { useParams } from "next/navigation";
-import CommentsSection from "@/components/ui/Comments/CommentsSection";
+import CommentsSection from "@/components/post-details/comment/CommentsSection";
 import PostDetailsSection from "@/components/post-details/PostDetailsSection";
 
 const PostDetailPage = () => {

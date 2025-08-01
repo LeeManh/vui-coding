@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import LogoSquare from "@/components/ui/Logo/LogonSquare";
+import { Button } from "@/components/shared/Button";
+import { Input } from "@/components/shared/Input";
+import { LogoSquare } from "@/components/shared/logo";
 import Link from "next/link";
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
+import { ROUTE_PATHS } from "@/constants/route-paths";
 import { ArrowLeftIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,9 +17,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
+} from "@/components/shared/Form";
 import { useMutation } from "@tanstack/react-query";
-import { register } from "@/apis/auth.api";
+import { register } from "@/apis/auth";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 

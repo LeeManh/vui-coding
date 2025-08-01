@@ -1,15 +1,15 @@
 "use client";
 
-import { getPosts } from "@/apis/post.api";
-import PostCard, { PostCardSkeleton } from "@/components/ui/Posts/PostCard";
-import { QUERY_KEYS } from "@/constants/query-keys.constant";
+import { getPosts } from "@/apis/post";
+import { PostCard, PostCardSkeleton } from "@/components/shared/posts";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { keepPreviousData, useInfiniteQuery } from "@tanstack/react-query";
-import SearchPost from "@/components/ui/SearchPost";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import Loader from "@/components/ui/Loader";
-import SortTabs from "@/components/ui/SortTabs";
-import { useSortParams } from "@/hooks/useSortParams";
-import { MetaData } from "@/types/common.type";
+import { SearchPost } from "@/components/home/search-post";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import Loader from "@/components/shared/loader";
+import SortTabs from "@/components/home/sort-tabs";
+import { useSortParams } from "@/hooks/use-sort-params";
+import { MetaData } from "@/types/common";
 
 const ArchivePage = () => {
   const { sort, updateSort } = useSortParams();

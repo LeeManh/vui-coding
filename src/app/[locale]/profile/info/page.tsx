@@ -9,14 +9,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
-import { Input } from "@/components/ui/Input";
+} from "@/components/shared/Form";
+import { Input } from "@/components/shared/Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { Button } from "@/components/ui/Button";
-import { DatePicker } from "@/components/ui/DatePicker";
+import { Button } from "@/components/shared/Button";
 
 const FormSchema = z.object({
   username: z.string(),
@@ -90,9 +89,7 @@ const ProfileInfoPage = () => {
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormLabel required>{t("Common.birthday")}</FormLabel>
-                  <FormControl>
-                    <DatePicker {...field} />
-                  </FormControl>
+                  <FormControl></FormControl>
                   <FormMessage />
                 </FormItem>
               )}

@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
-import LogoSquare from "@/components/ui/Logo/LogonSquare";
+import { Button } from "@/components/shared/Button";
+import { Input } from "@/components/shared/Input";
+import { LogoSquare } from "@/components/shared/logo";
 import Link from "next/link";
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
+import { ROUTE_PATHS } from "@/constants/route-paths";
 import { ArrowLeftIcon } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,12 +17,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/Form";
+} from "@/components/shared/Form";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from "@/apis/auth.api";
+import { signIn } from "@/apis/auth";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/auth-context";
 
 const FormSchema = z.object({
   email: z.email({ message: "Invalid email address" }),
@@ -96,7 +96,7 @@ const SignInPage = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full" loading={signInMutation.isPending}>
+          <Button type="submit" className="w-full" disabled={signInMutation.isPending}>
             Sign in
           </Button>
         </form>

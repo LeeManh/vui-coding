@@ -1,5 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/Sidebar";
-import { ProfileSidebar } from "@/components/ui/Sidebar/ProfileSidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/shared/Sidebar";
+import { ProfileSidebar } from "@/components/profile/profile-sidebar";
 
 export default function ProfileLayout({
   children,

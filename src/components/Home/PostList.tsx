@@ -1,16 +1,16 @@
 "use client";
 
-import { getPosts } from "@/apis/post.api";
-import { QUERY_KEYS } from "@/constants/query-keys.constant";
+import { getPosts } from "@/apis/post";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import PostCard, { PostCardSkeleton } from "@/components/ui/Posts/PostCard";
-import { Button } from "@/components/ui/Button";
+import { PostCard, PostCardSkeleton } from "@/components/shared/posts";
+import { Button } from "@/components/shared/Button";
 import { ChevronRight } from "lucide-react";
-import SearchPost from "@/components/ui/SearchPost";
+import { SearchPost } from "@/components/home/search-post";
 import Link from "next/link";
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
-import { useSortParams } from "@/hooks/useSortParams";
-import SortTabs from "../ui/SortTabs";
+import { ROUTE_PATHS } from "@/constants/route-paths";
+import { useSortParams } from "@/hooks/use-sort-params";
+import SortTabs from "./sort-tabs";
 
 const PostList = () => {
   const { sort, updateSort } = useSortParams();

@@ -1,11 +1,11 @@
 "use client";
 
-import ProfileCard from "@/components/profile/ProfileCard";
-import AvatarUser from "@/components/ui/AvatarUser";
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
-import { useAuth } from "@/contexts/AuthContext";
+import ProfileCard from "@/components/profile/profile-card";
+import { ROUTE_PATHS } from "@/constants/route-paths";
+import { useAuth } from "@/contexts/auth-context";
 import { KeyRound, Mail, User } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { AvatarUser } from "@/components/shared/avatar-user";
 
 const ProfilePage = () => {
   const { user } = useAuth();

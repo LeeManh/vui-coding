@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from "@/constants/route-paths.constant";
+import { ROUTE_PATHS } from "@/constants/route-paths";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
