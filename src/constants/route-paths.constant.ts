@@ -5,7 +5,12 @@ export const ROUTE_PATHS = {
     REGISTER: "/auth/register",
   },
   ARCHIVE: "/archive",
-  PROFILE: "/profile",
+  PROFILE: {
+    ROOT: "/profile",
+    INFO: "/profile/info",
+    EMAIL: "/profile/email",
+    PASSWORD: "/profile/password",
+  },
   POST: {
     ROOT: "/posts",
   },

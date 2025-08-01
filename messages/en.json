@@ -1,4 +1,7 @@
 {
+  "Common": {
+    "username": "Username"
+  },
   "Header": {
     "login": "Login"
   },
@@ -16,5 +19,15 @@
   "LanguageSwitcher": {
     "english": "English",
     "vietnamese": "Vietnamese"
+  },
+  "Profile": {
+    "info": "My info",
+    "security": "Security",
+    "email": "Email",
+    "password": "Password",
+    "welcome": "Welcome, {username}",
+    "description": "Manage your personal information and security",
+    "dashboard": "Dashboard",
+    "personalInfo": "Personal info"
   }
 }

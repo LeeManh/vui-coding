@@ -1,4 +1,15 @@
 {
+  "Common": {
+    "username": "Tên người dùng",
+    "displayName": "Tên hiển thị",
+    "birthday": "Ngày sinh",
+    "gender": "Giới tính"
+  },
+  "Button": {
+    "save": "Lưu",
+    "update": "Cập nhật",
+    "cancel": "Hủy bỏ"
+  },
   "Header": {
     "login": "Đăng nhập"
   },
@@ -16,5 +27,15 @@
   "LanguageSwitcher": {
     "english": "Tiếng Anh",
     "vietnamese": "Tiếng Việt"
+  },
+  "Profile": {
+    "info": "Thông tin của tôi",
+    "security": "Bảo mật",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "welcome": "Chào mừng, {username}",
+    "description": "Quản lý thông tin cá nhân của bạn và bảo mật",
+    "dashboard": "Tổng quan",
+    "personalInfo": "Thông tin cá nhân"
   }
 }

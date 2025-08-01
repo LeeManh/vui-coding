@@ -11,12 +11,12 @@ import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../LanguageSwitcher";
 import ThemeSwitcher from "../ThemeSwitcher";
 
-const Header = () => {
+export const MainHeader = () => {
   const { isAuthenticated } = useAuth();
   const t = useTranslations("Header");
 
   return (
-    <header className="border-b ">
+    <header className="border-b">
       <div className="flex items-center justify-between py-4 app-container">
         <LogoVertical />
 
@@ -39,5 +39,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

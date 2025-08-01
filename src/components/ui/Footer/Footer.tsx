@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = getCurrentYear();
 
   return (
-    <footer className="py-10 bg-secondary mt-10">
+    <footer className="py-10 border-t mt-10">
       <section className="app-container text-center">
         <span className=" text-sm  font-thin">© {currentYear} • leem</span>
       </section>

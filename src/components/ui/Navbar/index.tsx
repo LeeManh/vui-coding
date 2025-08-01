@@ -21,8 +21,6 @@ const Navbar = () => {
   ];
   const pathname = usePathname();
 
-  console.log("pathname", pathname);
-
   return (
     <div className="border-b ">
       <div className="h-[46px] app-container flex items-center justify-center">

@@ -4,7 +4,7 @@ import React from "react";
 import Divider from "@/components/ui/Divider";
 import { useParams } from "next/navigation";
 import CommentsSection from "@/components/ui/Comments/CommentsSection";
-import PostDetailsSection from "@/components/PostDetails/PostDetailsSection";
+import PostDetailsSection from "@/components/post-details/PostDetailsSection";
 
 const PostDetailPage = () => {
   const params = useParams<{ "id-post": string }>();

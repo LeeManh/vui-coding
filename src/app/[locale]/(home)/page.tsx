@@ -1,8 +1,8 @@
-import AppSidebar from "@/components/ui/Sidebar/AppSidebar";
+import BlogSidebar from "@/components/ui/Sidebar/BlogSidebar";
 import Divider from "@/components/ui/Divider";
-import PostList from "@/components/Home/PostList";
-import PostListFeatured from "@/components/Home/PostListFeatured";
-import PostListPopular from "@/components/Home/PostListPopular";
+import PostList from "@/components/home/PostList";
+import PostListFeatured from "@/components/home/PostListFeatured";
+import PostListPopular from "@/components/home/PostListPopular";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
 
         <div className="col-span-1">
-          <AppSidebar />
+          <BlogSidebar />
         </div>
       </div>
     </div>

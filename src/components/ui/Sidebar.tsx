@@ -18,7 +18,7 @@ import {
   SheetTitle,
 } from "@/components/ui/Sheet";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/Tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -261,8 +261,10 @@ function SidebarTrigger({ className, onClick, ...props }: React.ComponentProps<t
       }}
       {...props}
     >
-      <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
+      <div className="flex items-center">
+        <PanelLeftIcon />
+        <span className="sr-only">Toggle Sidebar</span>
+      </div>
     </Button>
   );
 }

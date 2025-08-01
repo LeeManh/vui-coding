@@ -38,7 +38,7 @@ const UserMenu = () => {
 
         {/* Navigation Items */}
         <DropdownMenuGroup>
-          <Link href={ROUTE_PATHS.PROFILE}>
+          <Link href={ROUTE_PATHS.PROFILE.ROOT}>
             <DropdownMenuItem>
               <User className="w-5 h-5 mr-3 text-foreground" />
               {t("profile")}

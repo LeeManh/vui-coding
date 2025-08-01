@@ -1,4 +1,4 @@
-import Header from "@/components/ui/Header/Header";
+import { MainHeader } from "@/components/ui/Header";
 import React from "react";
 import Navbar from "@/components/ui/Navbar";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ const MainLayout = (props: MainLayoutProps) => {
 
   return (
     <div>
-      {showHeader && <Header />}
+      {showHeader && <MainHeader />}
       {showNavbar && <Navbar />}
 
       <div className={cn(containers[containerType], "py-6")}>{children}</div>

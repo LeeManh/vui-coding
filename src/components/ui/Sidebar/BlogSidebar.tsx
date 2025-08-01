@@ -2,7 +2,7 @@ import React from "react";
 import SubscribeForm from "../SubscribeForm";
 import LogoSquare from "../Logo/LogonSquare";
 
-const AppSidebar = () => {
+const BlogSidebar = () => {
   return (
     <div>
       <div className="space-y-1">
@@ -29,4 +29,4 @@ const AppSidebar = () => {
   );
 };
 
-export default AppSidebar;
+export default BlogSidebar;
