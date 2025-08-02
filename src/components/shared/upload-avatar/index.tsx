@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/shared/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
 
-export function UploadAvatar() {
-  const [avatarImage, setAvatarImage] = useState<string | null>(null);
+interface UploadAvatarProps {
+  username?: string;
+  avatar?: string | null;
+  onChange?: (avatar: string | null) => void;
+}
+
+export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarProps) {
+  const [avatarImage, setAvatarImage] = useState<string | null>(avatar ?? null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,6 +19,7 @@ export function UploadAvatar() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setAvatarImage(imageUrl);
+      onChange?.(imageUrl);
     }
   };
 
@@ -20,16 +27,23 @@ export function UploadAvatar() {
     e.preventDefault();
 
     setAvatarImage(null);
+    onChange?.(null);
+
     // Reset input value to allow uploading the same file again
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
+
+  // sync avatar with avatarImage
+  useEffect(() => {
+    setAvatarImage(avatar ?? null);
+  }, [avatar]);
 
   return (
     <div className="relative w-32 h-32 rounded-full">
       {avatarImage ? (
         <Avatar className="w-full h-full">
           <AvatarImage src={avatarImage} className="object-cover" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>{username[0]?.toUpperCase()}</AvatarFallback>
         </Avatar>
       ) : (
         <div className="absolute inset-0 bg-muted/50 flex items-center justify-center group-hover:opacity-100 transition-opacity duration-200 rounded-full">

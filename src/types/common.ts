@@ -1,4 +1,4 @@
-import { HttpStatus } from "./http-status";
+import { HttpStatus } from "../constants/http-status";
 
 export interface SuccessRes<T> {
   message: string;
@@ -19,10 +19,4 @@ export interface MetaData {
   totalPages: number;
   hasNext: boolean;
   hasPrev: boolean;
-}
-
-export enum SortType {
-  NEW = "new",
-  TOP = "top",
-  COMMUNITY = "community",
 }

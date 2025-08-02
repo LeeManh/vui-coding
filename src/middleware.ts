@@ -1,7 +1,7 @@
-import { middlewareStack } from "./lib/middleware-stack";
+import { stackMiddleware } from "./lib/stack-middleware";
 import { basicAuthMiddleware, intlMiddleware } from "./middlewares";
 
-export default middlewareStack([basicAuthMiddleware, intlMiddleware]);
+export default stackMiddleware([basicAuthMiddleware, intlMiddleware]);
 
 export const config = {
   matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",

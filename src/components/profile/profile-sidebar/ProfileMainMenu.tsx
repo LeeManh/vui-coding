@@ -23,8 +23,10 @@ export interface Item {
   url?: string;
   icon?: LucideIcon;
   isActive?: boolean;
-  items?: Item[];
+  items?: ItemChild[];
 }
+
+type ItemChild = Item & { url: string };
 
 interface ProfileMainMenuProps {
   items: Item[];
@@ -70,10 +72,10 @@ export function ProfileMainMenu({ items }: ProfileMainMenuProps) {
                     {item.items?.map((subItem) => (
                       <SidebarMenuSubItem key={subItem.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={subItem.url}>
+                          <Link href={subItem.url}>
                             {subItem.icon && <subItem.icon />}
                             <span>{subItem.title}</span>
-                          </a>
+                          </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}

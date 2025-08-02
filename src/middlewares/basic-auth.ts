@@ -1,5 +1,5 @@
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
-import { type Middleware } from "../lib/middleware-stack";
+import { type Middleware } from "../lib/stack-middleware";
 
 export function basicAuthMiddleware(middleware: Middleware) {
   return async (request: NextRequest, event: NextFetchEvent, response: NextResponse) => {

@@ -135,4 +135,8 @@
   .text-caption {
     @apply text-sm text-muted-foreground;
   }
+
+  .profile-container {
+    @apply border p-4 rounded-md max-w-2xl mx-auto w-full;
+  }
 }

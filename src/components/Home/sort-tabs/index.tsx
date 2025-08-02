@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/shared/Tabs";
-import { SortType } from "@/types/common";
+import { SortType } from "@/constants/filter";
 
 interface SortTabsProps {
   value: SortType;

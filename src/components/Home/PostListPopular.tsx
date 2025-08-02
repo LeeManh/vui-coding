@@ -5,7 +5,7 @@ import { getPosts } from "@/apis/post";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { PostCardPopular, PostCardPopularSkeleton } from "@/components/shared/posts";
-import { SortType } from "@/types/common";
+import { SortType } from "@/constants/filter";
 import { useRouter } from "next/navigation";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 

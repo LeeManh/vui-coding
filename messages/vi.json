@@ -3,7 +3,16 @@
     "username": "Tên người dùng",
     "displayName": "Tên hiển thị",
     "birthday": "Ngày sinh",
-    "gender": "Giới tính"
+    "gender": "Giới tính",
+    "avatar": "Avatar",
+    "newPassword": "Mật khẩu mới",
+    "confirmPassword": "Xác nhận mật khẩu"
+  },
+  "Gender": {
+    "male": "Nam",
+    "female": "Nữ",
+    "other": "Khác",
+    "select": "Chọn giới tính"
   },
   "Button": {
     "save": "Lưu",
@@ -36,6 +45,36 @@
     "welcome": "Chào mừng, {username}",
     "description": "Quản lý thông tin cá nhân của bạn và bảo mật",
     "dashboard": "Tổng quan",
-    "personalInfo": "Thông tin cá nhân"
+    "personalInfo": "Thông tin cá nhân",
+    "changePassword": "Đổi mật khẩu",
+    "passwordDescription": "Đổi mật khẩu để bảo mật tài khoản của bạn",
+    "history": "Lịch sử hoạt động",
+    "activity": "Hoạt động"
+  },
+  "Validation": {
+    "required": "{field} là bắt buộc",
+    "passwordMissMatch": "Mật khẩu không khớp",
+    "minLength": "{field} phải có ít nhất {min} ký tự"
+  },
+  "UserAction": {
+    "all": "Tất cả hoạt động",
+    "bookmark": "Bookmark",
+    "deleteBookmark": "Xóa bookmark",
+    "upvote": "Upvote",
+    "downvote": "Downvote",
+    "unvote": "Unvote",
+    "accept": "Chấp nhận",
+    "delete": "Xóa"
+  },
+  "UserActionType": {
+    "all": "Tất cả các loại",
+    "post": "Bài viết",
+    "question": "Câu hỏi",
+    "series": "Series",
+    "organization": "Tổ chức",
+    "answer": "Câu trả lời",
+    "tag": "Thẻ",
+    "comment": "Bình luận",
+    "user": "Người dùng"
   }
 }

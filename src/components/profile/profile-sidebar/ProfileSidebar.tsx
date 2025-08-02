@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/shared/Sidebar";
-import { Home, IdCard, KeyRound, Lock, Mail, User } from "lucide-react";
+import { Activity, History, IdCard, KeyRound, LayoutDashboard, Lock, User } from "lucide-react";
 import { Item, ProfileMainMenu } from "./ProfileMainMenu";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useTranslations } from "next-intl";
@@ -17,7 +17,7 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
       {
         title: t("dashboard"),
         url: ROUTE_PATHS.PROFILE.ROOT,
-        icon: Home,
+        icon: LayoutDashboard,
       },
       {
         title: "Thông tin của tôi",
@@ -29,22 +29,29 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
             url: ROUTE_PATHS.PROFILE.INFO,
             icon: User,
           },
-          {
-            title: "Email",
-            url: ROUTE_PATHS.PROFILE.EMAIL,
-            icon: Mail,
-          },
         ],
       },
       {
-        title: "Bảo mật",
+        title: t("security"),
         icon: Lock,
         isActive: true,
         items: [
           {
-            title: "Mật khẩu",
+            title: t("changePassword"),
             url: ROUTE_PATHS.PROFILE.PASSWORD,
             icon: KeyRound,
+          },
+        ],
+      },
+      {
+        title: t("activity"),
+        icon: Activity,
+        isActive: true,
+        items: [
+          {
+            title: t("history"),
+            url: ROUTE_PATHS.PROFILE.HISTORY,
+            icon: History,
           },
         ],
       },

@@ -3,7 +3,7 @@
 import ProfileCard from "@/components/profile/profile-card";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useAuth } from "@/contexts/auth-context";
-import { KeyRound, Mail, User } from "lucide-react";
+import { History, KeyRound, Mail, User } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { AvatarUser } from "@/components/shared/avatar-user";
 
@@ -18,14 +18,14 @@ const ProfilePage = () => {
       href: ROUTE_PATHS.PROFILE.INFO,
     },
     {
-      title: t("email"),
-      icon: <Mail className="w-6 h-6" />,
-      href: ROUTE_PATHS.PROFILE.EMAIL,
-    },
-    {
       title: t("password"),
       icon: <KeyRound className="w-6 h-6" />,
       href: ROUTE_PATHS.PROFILE.PASSWORD,
+    },
+    {
+      title: t("history"),
+      icon: <History className="w-6 h-6" />,
+      href: ROUTE_PATHS.PROFILE.HISTORY,
     },
   ];
 

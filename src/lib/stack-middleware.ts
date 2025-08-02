@@ -10,11 +10,11 @@ export type Middleware = (
 
 type MiddlewareFactory = (middleware: Middleware) => Middleware;
 
-export function middlewareStack(middlewareFactories: MiddlewareFactory[], index = 0): Middleware {
+export function stackMiddleware(middlewareFactories: MiddlewareFactory[], index = 0): Middleware {
   const currentFactory = middlewareFactories[index];
 
   if (currentFactory) {
-    const nextMiddleware = middlewareStack(middlewareFactories, index + 1);
+    const nextMiddleware = stackMiddleware(middlewareFactories, index + 1);
     return currentFactory(nextMiddleware);
   }
 

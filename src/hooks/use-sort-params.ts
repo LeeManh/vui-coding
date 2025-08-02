@@ -1,6 +1,6 @@
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { SortType } from "@/types/common";
+import { SortType } from "@/constants/filter";
 
 interface Props {
   defaultSort?: SortType;

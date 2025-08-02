@@ -36,7 +36,6 @@ export const UserMenu = () => {
           </div>
         </div>
 
-        {/* Navigation Items */}
         <DropdownMenuGroup>
           <Link href={ROUTE_PATHS.PROFILE.ROOT}>
             <DropdownMenuItem>
@@ -44,10 +43,12 @@ export const UserMenu = () => {
               {t("profile")}
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem>
-            <History className="w-5 h-5 mr-3 text-foreground" />
-            {t("history")}
-          </DropdownMenuItem>
+          <Link href={ROUTE_PATHS.PROFILE.HISTORY}>
+            <DropdownMenuItem>
+              <History className="w-5 h-5 mr-3 text-foreground" />
+              {t("history")}
+            </DropdownMenuItem>
+          </Link>
           <DropdownMenuItem>
             <Settings className="w-5 h-5 mr-3 text-foreground" />
             {t("settings")}

@@ -8,8 +8,8 @@ export const ROUTE_PATHS = {
   PROFILE: {
     ROOT: "/profile",
     INFO: "/profile/info",
-    EMAIL: "/profile/email",
     PASSWORD: "/profile/password",
+    HISTORY: "/profile/history",
   },
   POST: {
     ROOT: "/posts",
