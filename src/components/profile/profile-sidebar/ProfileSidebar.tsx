@@ -3,7 +3,16 @@
 import * as React from "react";
 
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/shared/Sidebar";
-import { Activity, History, IdCard, KeyRound, LayoutDashboard, Lock, User } from "lucide-react";
+import {
+  Activity,
+  History,
+  IdCard,
+  KeyRound,
+  LayoutDashboard,
+  Lock,
+  Mail,
+  User,
+} from "lucide-react";
 import { Item, ProfileMainMenu } from "./ProfileMainMenu";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useTranslations } from "next-intl";
@@ -20,14 +29,19 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
         icon: LayoutDashboard,
       },
       {
-        title: "Thông tin của tôi",
+        title: t("info"),
         icon: IdCard,
         isActive: true,
         items: [
           {
-            title: "Thông tin cá nhân",
+            title: t("personalInfo"),
             url: ROUTE_PATHS.PROFILE.INFO,
             icon: User,
+          },
+          {
+            title: t("email"),
+            url: ROUTE_PATHS.PROFILE.EMAIL,
+            icon: Mail,
           },
         ],
       },

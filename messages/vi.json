@@ -49,12 +49,15 @@
     "changePassword": "Đổi mật khẩu",
     "passwordDescription": "Đổi mật khẩu để bảo mật tài khoản của bạn",
     "history": "Lịch sử hoạt động",
-    "activity": "Hoạt động"
+    "activity": "Hoạt động",
+    "emailDescription": "Email dự phòng của bạn cũng sẽ nhận được những thông báo liên quan đến bảo mật tài khoản và cũng được sử dụng để đặt lại mật khẩu.",
+    "changeEmail": "Đổi email"
   },
   "Validation": {
     "required": "{field} là bắt buộc",
     "passwordMissMatch": "Mật khẩu không khớp",
-    "minLength": "{field} phải có ít nhất {min} ký tự"
+    "minLength": "{field} phải có ít nhất {min} ký tự",
+    "email": "Email không hợp lệ"
   },
   "UserAction": {
     "all": "Tất cả hoạt động",

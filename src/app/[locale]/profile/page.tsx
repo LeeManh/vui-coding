@@ -18,6 +18,11 @@ const ProfilePage = () => {
       href: ROUTE_PATHS.PROFILE.INFO,
     },
     {
+      title: t("email"),
+      icon: <Mail className="w-6 h-6" />,
+      href: ROUTE_PATHS.PROFILE.EMAIL,
+    },
+    {
       title: t("password"),
       icon: <KeyRound className="w-6 h-6" />,
       href: ROUTE_PATHS.PROFILE.PASSWORD,
