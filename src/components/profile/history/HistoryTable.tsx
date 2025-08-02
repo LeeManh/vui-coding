@@ -13,7 +13,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, ChevronDown, MoreHorizontal, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/shared/Button";
 import { Checkbox } from "@/components/shared/Checkbox";
@@ -36,47 +36,88 @@ import {
   TableRow,
 } from "@/components/shared/Table";
 
-const data: Payment[] = [
+const data: ActivityHistory[] = [
   {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@example.com",
+    id: "1",
+    date: "thg 7 25, 3:32 CH",
+    activity: "Hoàn tác/Downvote",
+    type: "Bài viết",
+    title: "Giới thiệu Reactjs",
   },
   {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@example.com",
+    id: "2",
+    date: "thg 7 25, 3:31 CH",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "Giới thiệu Reactjs",
   },
   {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@example.com",
+    id: "3",
+    date: "thg 6 2, 2024 5:26 CH",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "Hiểu thị trường để hack lương ngành IT từ năm nhất",
   },
   {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@example.com",
+    id: "4",
+    date: "thg 6 1, 2024 8:33 CH",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "Authentication nâng cao trong SPA (React/Vue) dùng JWT kết hợp Cookie",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@example.com",
+    id: "5",
+    date: "thg 5 6, 2024 2:06 CH",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "Repository Pattern trong Laravel",
+  },
+  {
+    id: "6",
+    date: "thg 4 7, 2023 5:12 CH",
+    activity: "Downvote",
+    type: "Bài viết",
+    title: "Lexical Scope trong JS",
+  },
+  {
+    id: "7",
+    date: "thg 2 23, 2023 10:5x SA",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "8 kiểu cấu trúc dữ liệu mà mọi lập trình viên cần phải biết.",
+  },
+  {
+    id: "8",
+    date: "thg 2 22, 2023 9:18 CH",
+    activity: "Downvote",
+    type: "Bài viết",
+    title: "Hooks New React Feature",
+  },
+  {
+    id: "9",
+    date: "thg 2 22, 2023 8:07 CH",
+    activity: "Bookmark",
+    type: "Bài viết",
+    title: "Lập trình hướng đối tượng OOP",
+  },
+  {
+    id: "10",
+    date: "thg 2 22, 2023 8:07 CH",
+    activity: "Upvote",
+    type: "Bài viết",
+    title: "Lập trình hướng đối tượng OOP",
   },
 ];
 
-export type Payment = {
+export type ActivityHistory = {
   id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
+  date: string;
+  activity: string;
+  type: string;
+  title: string;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<ActivityHistory>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -99,64 +140,47 @@ export const columns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("status")}</div>,
-  },
-  {
-    accessorKey: "email",
+    accessorKey: "date",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Ngày (19)
           <ArrowUpDown />
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => <div>{row.getValue("date")}</div>,
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
+    accessorKey: "activity",
+    header: "Hoạt Động",
+    cell: ({ row }) => <div>{row.getValue("activity")}</div>,
+  },
+  {
+    accessorKey: "type",
+    header: "Kiểu",
+    cell: ({ row }) => <div>{row.getValue("type")}</div>,
+  },
+  {
+    accessorKey: "title",
+    header: "Tiêu đề",
+    cell: ({ row }) => <div>{row.getValue("title")}</div>,
   },
   {
     id: "actions",
+    header: "Hành động",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const activity = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => navigator.clipboard.writeText(payment.id)}>
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+          <ExternalLink className="h-4 w-4" />
+          <span className="sr-only">View</span>
+        </Button>
       );
     },
   },
@@ -191,15 +215,15 @@ function HistoryTable() {
     <div className="w-full">
       <div className="flex items-center py-4 gap-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) => table.getColumn("email")?.setFilterValue(event.target.value)}
+          placeholder="Lọc theo tiêu đề..."
+          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+          onChange={(event) => table.getColumn("title")?.setFilterValue(event.target.value)}
           className="max-w-sm"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown />
+              Cột <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
@@ -252,7 +276,7 @@ function HistoryTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  Không có kết quả.
                 </TableCell>
               </TableRow>
             )}
@@ -261,8 +285,8 @@ function HistoryTable() {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredSelectedRowModel().rows.length} trong{" "}
+          {table.getFilteredRowModel().rows.length} hàng được chọn.
         </div>
         <div className="space-x-2">
           <Button
@@ -271,7 +295,7 @@ function HistoryTable() {
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -279,7 +303,7 @@ function HistoryTable() {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Tiếp
           </Button>
         </div>
       </div>

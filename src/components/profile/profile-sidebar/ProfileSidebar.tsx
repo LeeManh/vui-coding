@@ -5,12 +5,14 @@ import * as React from "react";
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/shared/Sidebar";
 import {
   Activity,
+  Bookmark,
+  BookOpen,
   History,
   IdCard,
   KeyRound,
-  LayoutDashboard,
   Lock,
   Mail,
+  Pen,
   User,
 } from "lucide-react";
 import { Item, ProfileMainMenu } from "./ProfileMainMenu";
@@ -21,26 +23,21 @@ export interface ProfileSidebarProps extends React.ComponentProps<typeof Sidebar
 
 export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
   const t = useTranslations("Profile");
+
   const data: Record<string, Item[]> = {
     navMain: [
       {
-        title: t("dashboard"),
-        url: ROUTE_PATHS.PROFILE.ROOT,
-        icon: LayoutDashboard,
-      },
-      {
         title: t("info"),
         icon: IdCard,
-        isActive: true,
         items: [
           {
             title: t("personalInfo"),
-            url: ROUTE_PATHS.PROFILE.INFO,
+            url: ROUTE_PATHS.ME.INFO,
             icon: User,
           },
           {
             title: t("email"),
-            url: ROUTE_PATHS.PROFILE.EMAIL,
+            url: ROUTE_PATHS.ME.EMAIL,
             icon: Mail,
           },
         ],
@@ -48,11 +45,10 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
       {
         title: t("security"),
         icon: Lock,
-        isActive: true,
         items: [
           {
             title: t("changePassword"),
-            url: ROUTE_PATHS.PROFILE.PASSWORD,
+            url: ROUTE_PATHS.ME.PASSWORD,
             icon: KeyRound,
           },
         ],
@@ -60,12 +56,27 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
       {
         title: t("activity"),
         icon: Activity,
-        isActive: true,
         items: [
           {
             title: t("history"),
-            url: ROUTE_PATHS.PROFILE.HISTORY,
+            url: ROUTE_PATHS.ME.HISTORY,
             icon: History,
+          },
+        ],
+      },
+      {
+        title: t("myBookmark"),
+        icon: Bookmark,
+        items: [
+          {
+            title: t("bookmarkPost"),
+            url: ROUTE_PATHS.ME.BOOKMARK_POST,
+            icon: Pen,
+          },
+          {
+            title: t("bookmarkSeries"),
+            url: ROUTE_PATHS.ME.BOOKMARK_SERIES,
+            icon: BookOpen,
           },
         ],
       },

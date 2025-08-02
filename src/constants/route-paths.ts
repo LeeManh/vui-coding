@@ -5,14 +5,19 @@ export const ROUTE_PATHS = {
     REGISTER: "/auth/register",
   },
   ARCHIVE: "/archive",
-  PROFILE: {
-    ROOT: "/profile",
-    INFO: "/profile/info",
-    EMAIL: "/profile/email",
-    PASSWORD: "/profile/password",
-    HISTORY: "/profile/history",
+  ME: {
+    ROOT: "/me/info",
+    INFO: "/me/info",
+    EMAIL: "/me/email",
+    PASSWORD: "/me/password",
+    HISTORY: "/me/history",
+    BOOKMARK_POST: "/me/bookmark/post",
+    BOOKMARK_SERIES: "/me/bookmark/series",
   },
   POST: {
     ROOT: "/posts",
+  },
+  DASHBOARD: {
+    ROOT: "/dashboard",
   },
 } as const;

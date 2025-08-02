@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../DropdownMenu";
-import { ExternalLink, LogOut, User, Settings, History } from "lucide-react";
+import { ExternalLink, LogOut, User, Settings, History, Bookmark } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
 import { AvatarUser } from "@/components/shared/avatar-user";
 import { ROUTE_PATHS } from "@/constants/route-paths";
@@ -37,18 +37,25 @@ export const UserMenu = () => {
         </div>
 
         <DropdownMenuGroup>
-          <Link href={ROUTE_PATHS.PROFILE.ROOT}>
+          <Link href={ROUTE_PATHS.ME.ROOT}>
             <DropdownMenuItem>
               <User className="w-5 h-5 mr-3 text-foreground" />
               {t("profile")}
             </DropdownMenuItem>
           </Link>
-          <Link href={ROUTE_PATHS.PROFILE.HISTORY}>
+          <Link href={ROUTE_PATHS.ME.HISTORY}>
             <DropdownMenuItem>
               <History className="w-5 h-5 mr-3 text-foreground" />
               {t("history")}
             </DropdownMenuItem>
           </Link>
+          <Link href={ROUTE_PATHS.ME.BOOKMARK_POST}>
+            <DropdownMenuItem>
+              <Bookmark className="w-5 h-5 mr-3 text-foreground" />
+              {t("myBookmark")}
+            </DropdownMenuItem>
+          </Link>
+
           <DropdownMenuItem>
             <Settings className="w-5 h-5 mr-3 text-foreground" />
             {t("settings")}
@@ -59,10 +66,13 @@ export const UserMenu = () => {
 
         {/* Account Management */}
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <ExternalLink className="w-5 h-5 mr-3 text-foreground" />
-            {t("dashboard")}
-          </DropdownMenuItem>
+          <Link href={ROUTE_PATHS.DASHBOARD.ROOT}>
+            <DropdownMenuItem>
+              <ExternalLink className="w-5 h-5 mr-3 text-foreground" />
+              {t("dashboard")}
+            </DropdownMenuItem>
+          </Link>
+
           <DropdownMenuSeparator />
           <DropdownMenuItem className="text-destructive cursor-pointer" onClick={handleSignOut}>
             <LogOut className="w-5 h-5 mr-3 text-foreground" />

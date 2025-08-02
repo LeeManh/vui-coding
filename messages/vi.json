@@ -27,7 +27,8 @@
     "history": "Lịch sử hoạt động",
     "settings": "Cài đặt",
     "logout": "Đăng xuất",
-    "dashboard": "Bảng điều khiển"
+    "dashboard": "Bảng điều khiển",
+    "myBookmark": "Bookmark của tôi"
   },
   "Navbar": {
     "home": "Trang chủ",
@@ -49,9 +50,15 @@
     "changePassword": "Đổi mật khẩu",
     "passwordDescription": "Đổi mật khẩu để bảo mật tài khoản của bạn",
     "history": "Lịch sử hoạt động",
+    "historyDescription": "Xem lại các hoạt động và tương tác của bạn trên blog",
     "activity": "Hoạt động",
     "emailDescription": "Email dự phòng của bạn cũng sẽ nhận được những thông báo liên quan đến bảo mật tài khoản và cũng được sử dụng để đặt lại mật khẩu.",
-    "changeEmail": "Đổi email"
+    "changeEmail": "Đổi email",
+    "myBookmark": "Bookmark của tôi",
+    "bookmarkPost": "Bookmark bài viết",
+    "bookmarkSeries": "Bookmark series",
+    "bookmarkPostDescription": "Xem lại các bài viết đã bookmark của bạn",
+    "bookmarkSeriesDescription": "Xem lại các series đã bookmark của bạn"
   },
   "Validation": {
     "required": "{field} là bắt buộc",
