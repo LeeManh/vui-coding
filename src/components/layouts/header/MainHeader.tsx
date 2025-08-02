@@ -8,6 +8,7 @@ import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useAuth } from "@/contexts/auth-context";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
+import { SearchInput } from "@/components/shared/search-input";
 
 export const MainHeader = () => {
   const { isAuthenticated } = useAuth();
@@ -18,9 +19,9 @@ export const MainHeader = () => {
       <div className="flex items-center justify-between py-4 app-container">
         <LogoVertical />
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center justify-end space-x-1 flex-1">
+          <SearchInput />
           <LanguageSwitcher />
-
           {isAuthenticated ? (
             <UserMenu />
           ) : (
