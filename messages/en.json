@@ -1,20 +1,37 @@
 {
   "Common": {
-    "username": "Username"
+    "username": "Username",
+    "displayName": "Display name",
+    "birthday": "Birthday",
+    "gender": "Gender",
+    "avatar": "Avatar",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password"
+  },
+  "Gender": {
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "select": "Select gender"
+  },
+  "Button": {
+    "save": "Save",
+    "update": "Update",
+    "cancel": "Cancel"
   },
   "Header": {
     "login": "Login"
   },
   "UserMenu": {
     "profile": "Profile",
-    "history": "History",
+    "history": "Activity history",
     "settings": "Settings",
     "logout": "Logout",
     "dashboard": "Dashboard"
   },
   "Navbar": {
     "home": "Home",
-    "archive": "Archive"
+    "archive": "Posts"
   },
   "LanguageSwitcher": {
     "english": "English",
@@ -27,7 +44,40 @@
     "password": "Password",
     "welcome": "Welcome, {username}",
     "description": "Manage your personal information and security",
-    "dashboard": "Dashboard",
-    "personalInfo": "Personal info"
+    "dashboard": "Overview",
+    "personalInfo": "Personal info",
+    "changePassword": "Change password",
+    "passwordDescription": "Change password to secure your account",
+    "history": "Activity history",
+    "activity": "Activity",
+    "emailDescription": "Your backup email will also receive security-related notifications and will also be used to reset your password.",
+    "changeEmail": "Change email"
+  },
+  "Validation": {
+    "required": "{field} is required",
+    "passwordMissMatch": "Passwords do not match",
+    "minLength": "{field} must be at least {min} characters",
+    "email": "Invalid email"
+  },
+  "UserAction": {
+    "all": "All activities",
+    "bookmark": "Bookmark",
+    "deleteBookmark": "Delete bookmark",
+    "upvote": "Upvote",
+    "downvote": "Downvote",
+    "unvote": "Unvote",
+    "accept": "Accept",
+    "delete": "Delete"
+  },
+  "UserActionType": {
+    "all": "All types",
+    "post": "Post",
+    "question": "Question",
+    "series": "Series",
+    "organization": "Organization",
+    "answer": "Answer",
+    "tag": "Tag",
+    "comment": "Comment",
+    "user": "User"
   }
 }
