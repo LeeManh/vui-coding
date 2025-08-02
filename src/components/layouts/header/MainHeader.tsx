@@ -9,7 +9,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { useTranslations } from "next-intl";
 import { SearchPost } from "@/components/home/search-post";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
-import { ThemeSwitcher } from "@/components/shared/theme-switcher";
+// import { ThemeSwitcher } from "@/components/shared/theme-switcher";
 
 export const MainHeader = () => {
   const { isAuthenticated } = useAuth();
@@ -25,7 +25,7 @@ export const MainHeader = () => {
 
           <LanguageSwitcher />
 
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
 
           {isAuthenticated ? (
             <UserMenu />
