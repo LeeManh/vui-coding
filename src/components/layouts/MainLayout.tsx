@@ -33,7 +33,7 @@ const MainLayout = (props: MainLayoutProps) => {
       {showHeader && <MainHeader />}
       {showNavbar && <Navbar />}
 
-      <div className={cn(containers[containerType], "py-6")}>{children}</div>
+      <div className={cn(containers[containerType])}>{children}</div>
 
       {showFooter && <Footer />}
     </div>

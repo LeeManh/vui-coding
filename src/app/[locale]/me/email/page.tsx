@@ -24,7 +24,7 @@ const ProfilePageEmail = () => {
     email: z
       .string()
       .nonempty({ message: t("Validation.required", { field: t("Profile.email") }) })
-      .email({ message: t("Validation.email") }),
+      .email({ message: t("Validation.invalidEmail") }),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({

@@ -20,7 +20,8 @@
     "cancel": "Hủy bỏ"
   },
   "Header": {
-    "login": "Đăng nhập"
+    "login": "Đăng nhập",
+    "loginOrRegister": "Đăng nhập / Đăng ký"
   },
   "UserMenu": {
     "profile": "Hồ sơ",
@@ -60,11 +61,16 @@
     "bookmarkPostDescription": "Xem lại các bài viết đã bookmark của bạn",
     "bookmarkSeriesDescription": "Xem lại các series đã bookmark của bạn"
   },
+  "Fields": {
+    "email": "Email",
+    "password": "Mật khẩu",
+    "username": "Tên người dùng"
+  },
   "Validation": {
     "required": "{field} là bắt buộc",
     "passwordMissMatch": "Mật khẩu không khớp",
     "minLength": "{field} phải có ít nhất {min} ký tự",
-    "email": "Email không hợp lệ"
+    "invalidEmail": "Email không hợp lệ"
   },
   "UserAction": {
     "all": "Tất cả hoạt động",
