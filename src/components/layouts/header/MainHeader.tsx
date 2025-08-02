@@ -7,7 +7,6 @@ import { UserMenu } from "@/components/shared/user-menu";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useAuth } from "@/contexts/auth-context";
 import { useTranslations } from "next-intl";
-import { SearchPost } from "@/components/home/search-post";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
 
 export const MainHeader = () => {
@@ -15,13 +14,11 @@ export const MainHeader = () => {
   const t = useTranslations("Header");
 
   return (
-    <header className="border-b">
+    <header className="sticky top-0 bg-background z-10 shadow-md">
       <div className="flex items-center justify-between py-4 app-container">
         <LogoVertical />
 
         <div className="flex items-center space-x-4">
-          <SearchPost />
-
           <LanguageSwitcher />
 
           {isAuthenticated ? (

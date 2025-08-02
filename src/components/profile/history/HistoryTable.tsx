@@ -13,7 +13,7 @@ import {
   useReactTable,
   VisibilityState,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal, ExternalLink } from "lucide-react";
+import { ArrowUpDown, ChevronDown, ExternalLink } from "lucide-react";
 
 import { Button } from "@/components/shared/Button";
 import { Checkbox } from "@/components/shared/Checkbox";
@@ -21,9 +21,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/shared/DropdownMenu";
 import { Input } from "@/components/shared/Input";
@@ -174,8 +171,6 @@ export const columns: ColumnDef<ActivityHistory>[] = [
     header: "Hành động",
     enableHiding: false,
     cell: ({ row }) => {
-      const activity = row.original;
-
       return (
         <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
           <ExternalLink className="h-4 w-4" />

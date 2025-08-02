@@ -1,6 +1,11 @@
 import { MetaData, SortType, SuccessRes } from "./common";
 import { Author } from "./user";
 
+export interface Tag {
+  id: string;
+  name: string;
+}
+
 export interface Post {
   id: string;
   title: string;
@@ -16,6 +21,7 @@ export interface Post {
   likesCount: number;
   isLiked: boolean;
   author: Author;
+  tags: Tag[];
 }
 
 export type ListPostRes = SuccessRes<Post[]> & { meta: MetaData };

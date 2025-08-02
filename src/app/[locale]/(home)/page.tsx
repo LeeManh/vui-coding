@@ -1,25 +1,29 @@
-import { BlogSidebar } from "@/components/layouts/sidebar";
-import Divider from "@/components/shared/Divider";
-import PostList from "@/components/home/PostList";
-import PostListFeatured from "@/components/home/PostListFeatured";
-import PostListPopular from "@/components/home/PostListPopular";
+"use client";
+
+import { PostCard } from "@/components/shared/posts/PostCard";
+import { dummyPosts } from "@/dummy";
+import { TitleSection } from "@/components/shared/title-section";
+import { CustomPagination } from "@/components/shared/custom-pagination";
 
 export default function Home() {
   return (
-    <div>
-      <PostListFeatured />
-      <Divider />
+    <div className="flex gap-2 pt-6">
+      <div className="divide-y flex-1">
+        {dummyPosts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
 
-      <PostListPopular />
-      <Divider />
+        <CustomPagination
+          currentPage={1}
+          totalPages={10}
+          onPageChange={() => {}}
+          className="mt-4"
+        />
+      </div>
 
-      <div className="grid grid-cols-3 gap-8 mt-4">
-        <div className="col-span-2">
-          <PostList />
-        </div>
-
-        <div className="col-span-1">
-          <BlogSidebar />
+      <div className="w-64 h-fit">
+        <div className="p-2">
+          <TitleSection title="Series mới nhất" />
         </div>
       </div>
     </div>

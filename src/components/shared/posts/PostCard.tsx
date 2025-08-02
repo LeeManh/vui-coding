@@ -1,62 +1,61 @@
-import { Post } from "@/types/post";
-import Image from "next/image";
+"use client";
+
 import React from "react";
-import dayjs from "dayjs";
-import Link from "next/link";
-import { PostCardActions } from "@/components/shared/posts";
-import { Skeleton } from "@/components/shared/Skeleton";
-import { getPostUrl } from "@/lib/utils";
+import { AvatarUser } from "@/components/shared/avatar-user";
+import { Badge } from "@/components/shared/Badge";
+import { Post } from "@/types/post";
+import { Eye, Bookmark, MessageCircle, Link } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface PostCardProps {
   post: Post;
+  className?: string;
 }
 
-export const PostCard = ({ post }: PostCardProps) => {
+export const PostCard = ({ post, className }: PostCardProps) => {
   return (
-    <Link href={getPostUrl(post.id)} className="block group">
-      <article className="flex py-4 gap-4">
-        <div className="space-y-2 flex-1">
-          <div className="text-lg line-clamp-3">{post.title}</div>
-          <div className="text-sm leading-5 line-clamp-3">{post.subTitle}</div>
-          <div className="text-xs  line-clamp-1">
-            {dayjs(post.createdAt).format("MMM DD")} • {post.author.username}
+    <div className={cn("flex gap-3 p-2", className)}>
+      <AvatarUser avatar={post.author.avatar} username={post.author.username} />
+
+      <div className="space-y-1">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="text-foreground">{post.author.username}</span>
+          <span>thg 6 5, 8:00 CH</span>
+          <span>2 phút đọc</span>
+          <Link className="size-3" />
+        </div>
+
+        <div className="">{post.title}</div>
+
+        <div className="flex items-center gap-2">
+          {post.tags.map((tag) => (
+            <Badge
+              key={tag.id}
+              variant="secondary"
+              className="text-xs text-muted-foreground font-normal"
+            >
+              {tag.name}
+            </Badge>
+          ))}
+        </div>
+
+        <div className="flex items-center text-muted-foreground">
+          <div className="flex items-center gap-4 text-xs">
+            <div className="flex items-center gap-1">
+              <Eye className="size-3" />
+              <span>20</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Bookmark className="size-3" />
+              <span>1</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <MessageCircle className="size-3" />
+              <span>20</span>
+            </div>
           </div>
-          <PostCardActions likesCount={post.likesCount} commentsCount={post.commentsCount} />
         </div>
-
-        <div>
-          <Image
-            src={post.thumbnail}
-            alt={post.title}
-            width={160}
-            height={106}
-            className="rounded-sm w-[160px] h-[106px] object-cover"
-          />
-        </div>
-      </article>
-    </Link>
-  );
-};
-
-export const PostCardSkeleton = () => {
-  return (
-    <div className="block group">
-      <article className="flex py-4 gap-4">
-        {/* Left side - Content */}
-        <div className="space-y-2 flex-1">
-          {/* Title skeleton - 3 lines (text-lg = h-7) */}
-          <div className="space-y-1">
-            <Skeleton className="h-7 w-full" />
-            <Skeleton className="h-7 w-5/6" />
-            <Skeleton className="h-7 w-2/3" />
-          </div>
-        </div>
-
-        {/* Right side - Thumbnail */}
-        <div>
-          <Skeleton className="w-40 h-[106px] rounded-sm" />
-        </div>
-      </article>
+      </div>
     </div>
   );
 };

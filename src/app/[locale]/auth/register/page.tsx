@@ -3,7 +3,6 @@
 import React from "react";
 import { Button } from "@/components/shared/Button";
 import { Input } from "@/components/shared/Input";
-import { LogoSquare } from "@/components/shared/logo";
 import Link from "next/link";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { ArrowLeftIcon } from "lucide-react";
@@ -61,9 +60,6 @@ const RegisterPage = () => {
       setAuth({ accessToken, refreshToken });
       toast.success(data.message);
       router.push(ROUTE_PATHS.HOME);
-    },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Registration failed");
     },
   });
 
