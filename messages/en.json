@@ -20,14 +20,16 @@
     "cancel": "Cancel"
   },
   "Header": {
-    "login": "Login"
+    "login": "Login",
+    "loginOrRegister": "Login / Register"
   },
   "UserMenu": {
     "profile": "Profile",
     "history": "Activity history",
     "settings": "Settings",
     "logout": "Logout",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "myBookmark": "My bookmarks"
   },
   "Navbar": {
     "home": "Home",
@@ -49,15 +51,26 @@
     "changePassword": "Change password",
     "passwordDescription": "Change password to secure your account",
     "history": "Activity history",
+    "historyDescription": "Review your activities and interactions on the blog",
     "activity": "Activity",
     "emailDescription": "Your backup email will also receive security-related notifications and will also be used to reset your password.",
-    "changeEmail": "Change email"
+    "changeEmail": "Change email",
+    "myBookmark": "My bookmarks",
+    "bookmarkPost": "Bookmarked posts",
+    "bookmarkSeries": "Bookmarked series",
+    "bookmarkPostDescription": "Review your bookmarked posts",
+    "bookmarkSeriesDescription": "Review your bookmarked series"
+  },
+  "Fields": {
+    "email": "Email",
+    "password": "Password",
+    "username": "Username"
   },
   "Validation": {
     "required": "{field} is required",
     "passwordMissMatch": "Passwords do not match",
     "minLength": "{field} must be at least {min} characters",
-    "email": "Invalid email"
+    "invalidEmail": "Invalid email"
   },
   "UserAction": {
     "all": "All activities",
