@@ -3,13 +3,17 @@
 import React, { useState } from "react";
 import { Button } from "@/components/shared/Button";
 import { AvatarUser } from "@/components/shared/avatar-user";
-import { Heart, MessageCircle } from "lucide-react";
-import { Comment } from "@/types/comment";
+import { MessageCircle, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Comment } from "@/types/comment.type";
 import { cn } from "@/lib/utils";
 import { getTimeAgo } from "@/lib/date";
 import CommentForm from "./CommentForm";
-import { ReactionTarget } from "@/types/reaction";
-import { useOptimisticCommentLike } from "@/hooks/use-optimistic-comment-like";
+import { ReactionType } from "@/constants/reaction";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createLike } from "@/apis/like";
+import { QUERY_KEYS } from "@/constants/query-keys";
+import { LikeTargetType } from "@/constants/like";
+import { useLocale, useTranslations } from "next-intl";
 
 interface CommentItemProps {
   comment: Comment;
@@ -17,21 +21,22 @@ interface CommentItemProps {
 }
 
 const CommentItem = ({ comment, isReply }: CommentItemProps) => {
-  const timeAgo = getTimeAgo(comment.createdAt);
+  const queryClient = useQueryClient();
+  const t = useTranslations();
+  const locale = useLocale();
+
   const [showReplyForm, setShowReplyForm] = useState(false);
 
-  const toggleLikeMutation = useOptimisticCommentLike(comment.postId);
-
-  const handleToggleLike = () => {
-    toggleLikeMutation.mutate({
-      targetId: comment.id,
-      targetType: ReactionTarget.COMMENT,
-    });
-  };
+  const createLikeMutation = useMutation({
+    mutationFn: createLike,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.COMMENTS, comment.targetId] });
+    },
+  });
 
   return (
     <div className={cn("space-y-4 relative", isReply && "ml-12")}>
-      <div className="absolute left-4 top-10 bottom-0 w-[1px] h-[calc(100%-30px)] " />
+      <div className="absolute left-4 top-10 bottom-0 w-[0.5px] h-[calc(100%-30px)] bg-gray-400" />
 
       <div className="flex gap-3">
         <AvatarUser avatar={comment.user.avatar} username={comment.user.username} />
@@ -39,7 +44,9 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
         <div className="flex-1 space-y-3">
           <div className="flex items-center gap-2">
             <span className="font-medium text-sm">{comment.user.username}</span>
-            <span className="text-xs ">{timeAgo}</span>
+            <span className="text-xs text-muted-foreground">
+              {getTimeAgo(comment.createdAt, locale)}
+            </span>
           </div>
 
           <div className="text-sm text-foreground">{comment.content}</div>
@@ -47,11 +54,48 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
-              className={cn("text-xs", comment.isLiked && "text-red-500 hover:text-red-600")}
-              onClick={handleToggleLike}
+              className={cn(
+                "text-xs",
+                comment.reaction === ReactionType.LIKE && "text-red-500 hover:text-red-600"
+              )}
+              onClick={() => {
+                createLikeMutation.mutate({
+                  targetId: comment.id,
+                  targetType: LikeTargetType.COMMENT,
+                });
+              }}
             >
-              <Heart className={cn("w-4 h-4", comment.isLiked && "fill-red-500")} />
-              <span>LIKE ({comment.likesCount})</span>
+              <ThumbsUp
+                className={cn("w-4 h-4", comment.reaction === ReactionType.LIKE && "fill-red-500")}
+              />
+              <span>
+                {t("Common.like")} ({comment.likeCount})
+              </span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              className={cn(
+                "text-xs",
+                comment.reaction === ReactionType.DISLIKE && "text-red-500 hover:text-red-600"
+              )}
+              onClick={() => {
+                createLikeMutation.mutate({
+                  targetId: comment.id,
+                  targetType: LikeTargetType.COMMENT,
+                  isDislike: true,
+                });
+              }}
+            >
+              <ThumbsDown
+                className={cn(
+                  "w-4 h-4",
+                  comment.reaction === ReactionType.DISLIKE && "fill-red-500"
+                )}
+              />
+              <span>
+                {t("Common.dislike")} ({comment.dislikeCount})
+              </span>
             </Button>
 
             <Button
@@ -62,13 +106,15 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
               }}
             >
               <MessageCircle className="w-4 h-4" />
-              <span>REPLY ({comment.commentsCount})</span>
+              <span>
+                {_.capitalize(t("Common.reply"))} ({comment.commentCount})
+              </span>
             </Button>
           </div>
 
           {showReplyForm && (
             <CommentForm
-              postId={comment.postId}
+              postId={comment.targetId}
               parentId={comment.id}
               isReply
               onCancel={() => setShowReplyForm(false)}

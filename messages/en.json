@@ -6,7 +6,15 @@
     "gender": "Gender",
     "avatar": "Avatar",
     "newPassword": "New password",
-    "confirmPassword": "Confirm password"
+    "confirmPassword": "Confirm password",
+    "views": "views",
+    "bookmark": "bookmarks",
+    "comments": "comments",
+    "tags": "Tags",
+    "newsletter": "Newsletter",
+    "dislike": "Dislike",
+    "like": "Like",
+    "reply": "Reply"
   },
   "Gender": {
     "male": "Male",
@@ -82,7 +90,7 @@
     "accept": "Accept",
     "delete": "Delete"
   },
-  "UserActionType": {
+  "UserActionTarget": {
     "all": "All types",
     "post": "Post",
     "question": "Question",
@@ -92,5 +100,13 @@
     "tag": "Tag",
     "comment": "Comment",
     "user": "User"
+  },
+  "Metadata": {
+    "home": {
+      "title": "vui.coding | Home"
+    }
+  },
+  "Date": {
+    "readingTime": "{readingTime} {readingTime, plural, =0 {minutes} one {minute} other {minutes}} read"
   }
 }

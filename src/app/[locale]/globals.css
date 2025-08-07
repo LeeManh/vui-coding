@@ -125,10 +125,6 @@
     @apply max-w-screen-lg mx-auto px-4;
   }
 
-  .app-container-sm {
-    @apply max-w-screen-sm mx-auto px-4;
-  }
-
   .text-subheading {
     @apply font-semibold text-xl;
   }

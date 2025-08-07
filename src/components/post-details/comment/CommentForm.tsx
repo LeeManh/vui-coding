@@ -4,8 +4,9 @@ import { Textarea } from "@/components/shared/Textarea";
 import { Button } from "@/components/shared/Button";
 import { useAuth } from "@/contexts/auth-context";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createComment } from "@/apis/comment";
+import { createComment } from "@/apis/comment.api";
 import { QUERY_KEYS } from "@/constants/query-keys";
+import { CommentTargetType } from "@/constants/comment.constant";
 
 interface CommentFormProps {
   postId: string;
@@ -26,8 +27,15 @@ const CommentForm = ({ postId, parentId, isReply, onCancel }: CommentFormProps) 
   const handleSubmit = async () => {
     if (!content.trim()) return;
 
-    await createCommentMutation.mutateAsync({ postId, parentId, content });
+    await createCommentMutation.mutateAsync({
+      targetId: postId,
+      targetType: CommentTargetType.POST,
+      content,
+      parentId: isReply ? parentId! : undefined,
+    });
+
     await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.COMMENTS, postId] });
+    await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.DETAIL, postId] });
 
     // Reset form after successful submission
     handleCancel();

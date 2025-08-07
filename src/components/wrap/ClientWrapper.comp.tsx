@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/shared/Sonner";
@@ -8,11 +8,9 @@ import { ErrorRes } from "@/types/common";
 import { AxiosError } from "axios";
 import { toast } from "sonner";
 import { AuthProvider } from "@/contexts/auth-context";
-import relativeTime from "dayjs/plugin/relativeTime";
-import dayjs from "dayjs";
+import dayjs from "@/lib/dayjs";
 import { ThemeProvider } from "@/contexts/theme-context";
-
-dayjs.extend(relativeTime);
+import { useLocale } from "next-intl";
 
 const queryClient: QueryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +27,13 @@ const queryClient: QueryClient = new QueryClient({
 });
 
 const ClientWrapper = ({ children }: { children: React.ReactNode }) => {
+  const locale = useLocale();
+
+  useEffect(() => {
+    console.log("locale", locale);
+    dayjs.locale(locale);
+  }, [locale]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>

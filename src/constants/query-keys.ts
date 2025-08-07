@@ -1,12 +1,13 @@
 export const QUERY_KEYS = {
   POSTS: {
     ALL: "posts",
-    POPULAR: "popular-posts",
-    FEATURED: "featured-post",
     DETAIL: "post-detail",
-    COMMENTS: "comments-post",
+    COMMENTS: "post-comments",
   },
   AUTH: {
     ME: "me",
+  },
+  TAGS: {
+    ALL: "tags",
   },
 };

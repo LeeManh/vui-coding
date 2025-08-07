@@ -1,19 +1,19 @@
-import { Post } from "@/types/post";
+import { Post } from "@/types/post.type";
 
 export const dummyPosts: Post[] = [
   {
     id: "1",
     title: "Bước tiến của Branch Statement trong lập trình",
-    subTitle: "Khám phá những cải tiến mới nhất trong việc xử lý điều kiện và logic phân nhánh",
+    description: "Khám phá những cải tiến mới nhất trong việc xử lý điều kiện và logic phân nhánh",
     slug: "buoc-tien-cua-branch-statement-trong-lap-trinh",
     thumbnail: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800",
     content:
       "Branch statement là một khái niệm cơ bản trong lập trình, cho phép chương trình thực hiện các hành động khác nhau dựa trên điều kiện cụ thể. Trong bài viết này, chúng ta sẽ khám phá những cải tiến mới nhất trong việc xử lý điều kiện và logic phân nhánh. Từ if-else truyền thống đến pattern matching hiện đại, từ switch case đến guard clauses, có rất nhiều cách tiếp cận khác nhau để xử lý branch statement một cách hiệu quả. Chúng ta sẽ xem xét các best practices, performance considerations và cách áp dụng chúng trong các ngôn ngữ lập trình khác nhau như JavaScript, TypeScript, Python và Rust. Đặc biệt, chúng ta sẽ tập trung vào việc làm thế nào để viết code dễ đọc, dễ bảo trì và có hiệu suất cao khi xử lý các trường hợp phức tạp.",
     authorId: "user1",
-    featured: true,
+
     createdAt: "2024-01-15T10:30:00Z",
     updatedAt: "2024-01-15T10:30:00Z",
-    commentsCount: 1,
+    commentCount: 1,
     likesCount: 1,
     isLiked: false,
     author: {
@@ -30,16 +30,15 @@ export const dummyPosts: Post[] = [
   {
     id: "2",
     title: "React Hooks: Từ cơ bản đến nâng cao",
-    subTitle: "Hướng dẫn chi tiết về React Hooks và cách sử dụng chúng hiệu quả",
+    description: "Hướng dẫn chi tiết về React Hooks và cách sử dụng chúng hiệu quả",
     slug: "react-hooks-tu-co-ban-den-nang-cao",
     thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
     content:
       "React Hooks đã thay đổi cách chúng ta viết React components. Thay vì sử dụng class components với lifecycle methods phức tạp, chúng ta giờ đây có thể sử dụng functional components với hooks để quản lý state và side effects một cách đơn giản và hiệu quả hơn. Trong bài viết này, chúng ta sẽ đi từ những khái niệm cơ bản như useState và useEffect, đến những hooks nâng cao như useReducer, useCallback, useMemo và useRef. Chúng ta sẽ học cách tạo custom hooks để tái sử dụng logic, cách tối ưu performance với useMemo và useCallback, và cách xử lý các trường hợp edge case thường gặp. Đặc biệt, chúng ta sẽ tập trung vào việc hiểu rõ khi nào nên sử dụng hook nào và cách tránh các lỗi thường gặp khi làm việc với hooks.",
     authorId: "user2",
-    featured: false,
     createdAt: "2024-01-14T15:45:00Z",
     updatedAt: "2024-01-14T15:45:00Z",
-    commentsCount: 3,
+    commentCount: 3,
     likesCount: 5,
     isLiked: true,
     author: {
@@ -56,16 +55,16 @@ export const dummyPosts: Post[] = [
   {
     id: "3",
     title: "TypeScript: Type Safety trong thế giới JavaScript",
-    subTitle: "Khám phá sức mạnh của TypeScript và cách nó giúp code an toàn hơn",
+    description: "Khám phá sức mạnh của TypeScript và cách nó giúp code an toàn hơn",
     slug: "typescript-type-safety-trong-the-gioi-javascript",
     thumbnail: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800",
     content:
       "TypeScript đã trở thành một công cụ không thể thiếu trong việc phát triển ứng dụng JavaScript hiện đại. Với hệ thống type system mạnh mẽ, TypeScript giúp chúng ta phát hiện lỗi sớm hơn, viết code dễ đọc hơn và có được trải nghiệm development tốt hơn với IntelliSense và refactoring tools. Trong bài viết này, chúng ta sẽ khám phá các tính năng cốt lõi của TypeScript như interfaces, types, generics, union types, intersection types và conditional types. Chúng ta sẽ học cách thiết kế type definitions hiệu quả, cách sử dụng utility types, và cách tích hợp TypeScript vào các framework như React, Node.js và Express. Đặc biệt, chúng ta sẽ tập trung vào việc cân bằng giữa type safety và flexibility, cũng như cách migrate từ JavaScript sang TypeScript một cách an toàn.",
     authorId: "user3",
-    featured: true,
+
     createdAt: "2024-01-13T09:20:00Z",
     updatedAt: "2024-01-13T09:20:00Z",
-    commentsCount: 2,
+    commentCount: 2,
     likesCount: 8,
     isLiked: false,
     author: {
@@ -82,16 +81,15 @@ export const dummyPosts: Post[] = [
   {
     id: "4",
     title: "Next.js 14: App Router và Server Components",
-    subTitle: "Hướng dẫn sử dụng Next.js 14 với App Router và Server Components",
+    description: "Hướng dẫn sử dụng Next.js 14 với App Router và Server Components",
     slug: "nextjs-14-app-router-va-server-components",
     thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
     content:
       "Next.js 14 đã mang đến những thay đổi lớn với App Router và Server Components. App Router giới thiệu một cách tiếp cận mới để tổ chức routing dựa trên file system, trong khi Server Components cho phép chúng ta render components trên server để cải thiện performance và SEO. Trong bài viết này, chúng ta sẽ khám phá cách sử dụng App Router với các features như layouts, loading states, error boundaries và parallel routes. Chúng ta sẽ học cách tối ưu performance với Server Components, cách sử dụng Client Components khi cần thiết, và cách tích hợp với các data fetching methods mới như Server Actions. Đặc biệt, chúng ta sẽ tập trung vào việc migration từ Pages Router sang App Router và các best practices để xây dựng ứng dụng Next.js hiện đại.",
     authorId: "user1",
-    featured: false,
     createdAt: "2024-01-12T14:10:00Z",
     updatedAt: "2024-01-12T14:10:00Z",
-    commentsCount: 0,
+    commentCount: 0,
     likesCount: 3,
     isLiked: false,
     author: {
@@ -108,16 +106,16 @@ export const dummyPosts: Post[] = [
   {
     id: "5",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {
@@ -134,16 +132,16 @@ export const dummyPosts: Post[] = [
   {
     id: "6",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {
@@ -160,16 +158,16 @@ export const dummyPosts: Post[] = [
   {
     id: "7",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {
@@ -186,16 +184,16 @@ export const dummyPosts: Post[] = [
   {
     id: "8",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {
@@ -212,16 +210,16 @@ export const dummyPosts: Post[] = [
   {
     id: "9",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {
@@ -238,16 +236,16 @@ export const dummyPosts: Post[] = [
   {
     id: "10",
     title: "Docker: Containerization cho Developers",
-    subTitle: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
+    description: "Hướng dẫn sử dụng Docker để containerize ứng dụng",
     slug: "docker-containerization-cho-developers",
     thumbnail: "https://images.unsplash.com/photo-1605745341112-85963b73e3ae?w=800",
     content:
       "Docker đã trở thành một công cụ không thể thiếu trong việc phát triển và deploy ứng dụng hiện đại. Với khả năng containerize ứng dụng, Docker giúp chúng ta đảm bảo tính nhất quán giữa các môi trường development, staging và production. Trong bài viết này, chúng ta sẽ học cách tạo Dockerfile cho các ứng dụng Node.js, React, Python và các ngôn ngữ khác. Chúng ta sẽ khám phá các khái niệm cơ bản như images, containers, volumes, networks và Docker Compose. Đặc biệt, chúng ta sẽ tập trung vào việc tối ưu Docker images để giảm kích thước và cải thiện build time, cách sử dụng multi-stage builds, và cách tích hợp Docker vào CI/CD pipeline. Chúng ta cũng sẽ học cách debug ứng dụng trong container và các best practices để bảo mật Docker containers.",
     authorId: "user4",
-    featured: true,
+
     createdAt: "2024-01-11T11:30:00Z",
     updatedAt: "2024-01-11T11:30:00Z",
-    commentsCount: 4,
+    commentCount: 4,
     likesCount: 12,
     isLiked: true,
     author: {

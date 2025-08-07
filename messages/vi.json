@@ -6,7 +6,15 @@
     "gender": "Giới tính",
     "avatar": "Avatar",
     "newPassword": "Mật khẩu mới",
-    "confirmPassword": "Xác nhận mật khẩu"
+    "confirmPassword": "Xác nhận mật khẩu",
+    "views": "lượt xem",
+    "bookmark": "bookmark",
+    "comments": "bình luận",
+    "tags": "Thẻ",
+    "newsletter": "Đăng ký nhận tin",
+    "dislike": "Không thích",
+    "like": "Thích",
+    "reply": "Trả lời"
   },
   "Gender": {
     "male": "Nam",
@@ -80,9 +88,11 @@
     "downvote": "Downvote",
     "unvote": "Unvote",
     "accept": "Chấp nhận",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "undoUpvote": "Hoàn tác upvote",
+    "undoDownvote": "Hoàn tác downvote"
   },
-  "UserActionType": {
+  "UserActionTarget": {
     "all": "Tất cả các loại",
     "post": "Bài viết",
     "question": "Câu hỏi",
@@ -92,5 +102,13 @@
     "tag": "Thẻ",
     "comment": "Bình luận",
     "user": "Người dùng"
+  },
+  "Metadata": {
+    "home": {
+      "title": "vui.coding | Trang chủ"
+    }
+  },
+  "Date": {
+    "readingTime": "{readingTime} phút đọc"
   }
 }

@@ -10,51 +10,51 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/shared/DropdownMenu";
-import { UserActionType } from "@/constants/actions";
+import { UserActionTarget } from "@/constants/actions";
 import { ChevronUp } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { getActionTypeLabel } from "@/lib/format";
+import { getActionTargetTypeLabel } from "@/lib/format";
 
 export function FilterTypeHistory() {
   const t = useTranslations();
-  const [type, setType] = React.useState(UserActionType.ALL);
+  const [type, setType] = React.useState(UserActionTarget.ALL);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="justify-between w-full sm:w-[200px]">
-          {t(getActionTypeLabel(type))}
+          {t(getActionTargetTypeLabel(type))}
           <ChevronUp className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[200px]">
         <DropdownMenuRadioGroup
           value={type}
-          onValueChange={(value) => setType(value as UserActionType)}
+          onValueChange={(value) => setType(value as UserActionTarget)}
         >
-          <DropdownMenuRadioItem value={UserActionType.ALL}>
-            {t("UserActionType.all")}
+          <DropdownMenuRadioItem value={UserActionTarget.ALL}>
+            {t("UserActionTarget.all")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.POST}>
-            {t("UserActionType.post")}
+          <DropdownMenuRadioItem value={UserActionTarget.POST}>
+            {t("UserActionTarget.post")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.QUESTION}>
-            {t("UserActionType.question")}
+          <DropdownMenuRadioItem value={UserActionTarget.QUESTION}>
+            {t("UserActionTarget.question")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.SERIES}>
-            {t("UserActionType.series")}
+          <DropdownMenuRadioItem value={UserActionTarget.SERIES}>
+            {t("UserActionTarget.series")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.ANSWER}>
-            {t("UserActionType.answer")}
+          <DropdownMenuRadioItem value={UserActionTarget.ANSWER}>
+            {t("UserActionTarget.answer")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.TAG}>
-            {t("UserActionType.tag")}
+          <DropdownMenuRadioItem value={UserActionTarget.TAG}>
+            {t("UserActionTarget.tag")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.COMMENT}>
-            {t("UserActionType.comment")}
+          <DropdownMenuRadioItem value={UserActionTarget.COMMENT}>
+            {t("UserActionTarget.comment")}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={UserActionType.USER}>
-            {t("UserActionType.user")}
+          <DropdownMenuRadioItem value={UserActionTarget.USER}>
+            {t("UserActionTarget.user")}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

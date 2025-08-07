@@ -57,6 +57,12 @@ export function FilterActionHistory() {
           <DropdownMenuRadioItem value={UserAction.DELETE}>
             {t("UserAction.delete")}
           </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value={UserAction.UNDO_UPVOTE}>
+            {t("UserAction.undoUpvote")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value={UserAction.UNDO_DOWNVOTE}>
+            {t("UserAction.undoDownvote")}
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

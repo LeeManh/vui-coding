@@ -7,6 +7,7 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 import { getMe, signOut } from "@/apis/auth";
 import { useRouter } from "next/navigation";
 import { ROUTE_PATHS } from "@/constants/route-paths";
+import { useLogoutMutation } from "@/mutations/auth";
 
 interface AuthContextType {
   user: User | null;
@@ -32,6 +33,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     queryFn: getMe,
     enabled: !!accessToken,
   });
+
+  const { logoutMutation } = useLogoutMutation();
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -66,10 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.AUTH.ME] });
   };
 
-  const logout = async () => {
-    // Sign out
-    await signOut();
-
+  const clearAuth = () => {
     // Clear user state
     setUser(null);
     setAccessToken(null);
@@ -81,8 +81,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Clear query cache
     queryClient.removeQueries({ queryKey: [QUERY_KEYS.AUTH.ME] });
+  };
 
-    router.push(ROUTE_PATHS.AUTH.SIGN_IN);
+  const logout = async () => {
+    try {
+      await logoutMutation.mutateAsync();
+    } finally {
+      clearAuth();
+      router.push(ROUTE_PATHS.AUTH.SIGN_IN);
+    }
   };
 
   const isAuthenticated = !!accessToken;

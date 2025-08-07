@@ -50,16 +50,6 @@ export const LanguageSwitcher = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuRadioGroup value={locale} onValueChange={switchLanguage}>
-          <DropdownMenuRadioItem value="en">
-            <Image
-              src={images.en}
-              alt="English"
-              width={20}
-              height={20}
-              className="w-4 h-4 object-cover"
-            />
-            {t("english")}
-          </DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="vi">
             <Image
               src={images.vn}
@@ -69,6 +59,16 @@ export const LanguageSwitcher = () => {
               className="w-4 h-4 object-cover"
             />
             {t("vietnamese")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="en">
+            <Image
+              src={images.en}
+              alt="English"
+              width={20}
+              height={20}
+              className="w-4 h-4 object-cover"
+            />
+            {t("english")}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>

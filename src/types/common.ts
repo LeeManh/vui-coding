@@ -20,3 +20,9 @@ export interface MetaData {
   hasNext: boolean;
   hasPrev: boolean;
 }
+
+export interface QueryParams {
+  limit?: number;
+  page?: number;
+  search?: string;
+}

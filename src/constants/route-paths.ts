@@ -16,6 +16,7 @@ export const ROUTE_PATHS = {
   },
   POST: {
     ROOT: "/posts",
+    DETAIL: (id: string) => `/posts/${id}`,
   },
   DASHBOARD: {
     ROOT: "/dashboard",
