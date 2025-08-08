@@ -1,6 +1,6 @@
 import { CommentTargetType } from "@/constants/comment.constant";
 import { MetaData, SuccessRes } from "./common";
-import { Author } from "./user";
+import { Author } from "./user.type";
 import { ReactionType } from "./like.type";
 
 export interface Comment {

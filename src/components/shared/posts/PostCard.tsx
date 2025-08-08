@@ -28,8 +28,6 @@ export const PostCard = ({ post, className, isSeries }: PostCardProps) => {
     [isSeries, post.id]
   );
 
-  console.log("href", href);
-
   return (
     <Link href={href} className="block">
       <div className={cn("flex gap-3 py-4 px-2", className)}>

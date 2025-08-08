@@ -1,6 +1,6 @@
 import { PostStatus, PostVisibility } from "@/constants/post";
 import { MetaData, QueryParams, SuccessRes } from "./common";
-import { Author } from "./user";
+import { Author } from "./user.type";
 import { ReactionType } from "./like.type";
 import { Tag } from "./tag";
 

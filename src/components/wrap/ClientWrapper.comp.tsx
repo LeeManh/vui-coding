@@ -30,7 +30,6 @@ const ClientWrapper = ({ children }: { children: React.ReactNode }) => {
   const locale = useLocale();
 
   useEffect(() => {
-    console.log("locale", locale);
     dayjs.locale(locale);
   }, [locale]);
 

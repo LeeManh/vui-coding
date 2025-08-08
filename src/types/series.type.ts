@@ -1,8 +1,9 @@
 import { SeriesStatus, SeriesVisibility } from "@/constants/series.constant";
 import { ReactionType } from "./like.type";
-import { Author } from "./user";
-import { Post, Tag } from "./post.type";
+import { Author } from "./user.type";
+import { Post } from "./post.type";
 import { MetaData, SuccessRes } from "./common";
+import { Tag } from "./tag";
 
 export interface Series {
   id: string;

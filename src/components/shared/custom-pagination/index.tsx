@@ -49,7 +49,6 @@ export const CustomPagination = ({
   };
 
   const visiblePages = getVisiblePages();
-  console.log("visiblePages", visiblePages); // [1, 1]?
 
   return (
     <div className={cn("flex items-center justify-center gap-1", className)}>

@@ -14,15 +14,16 @@ import { getGenderLabel } from "@/lib/format";
 import { useTranslations } from "next-intl";
 
 interface SelectGenderProps {
-  value?: Gender;
-  onChange?: (value: Gender) => void;
+  value?: string;
+  onChange?: (value: string) => void;
+  placeHolder?: string;
 }
-export function SelectGender({ value, onChange }: SelectGenderProps) {
+export function SelectGender({ value, onChange, placeHolder }: SelectGenderProps) {
   const t = useTranslations();
 
-  const [gender, setGender] = useState<Gender | undefined>(value);
+  const [gender, setGender] = useState<string | undefined>(value);
 
-  const handleChange = (value: Gender) => {
+  const handleChange = (value: string) => {
     setGender(value);
     onChange?.(value);
   };
@@ -35,23 +36,23 @@ export function SelectGender({ value, onChange }: SelectGenderProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="justify-start">
-          {gender ? t(getGenderLabel(gender)) : t("Gender.select")}
+          {gender ? t(getGenderLabel(+gender)) : placeHolder ?? t("Gender.select")}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="start">
-        <DropdownMenuLabel>{t("Common.gender")}</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("Gender.select")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup
-          value={gender}
-          onValueChange={(value) => handleChange(value as Gender)}
+          value={String(gender)}
+          onValueChange={(value: string) => handleChange(value)}
         >
-          <DropdownMenuRadioItem value={Gender.MALE}>
+          <DropdownMenuRadioItem value={String(Gender.MALE)}>
             {t(getGenderLabel(Gender.MALE))}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={Gender.FEMALE}>
+          <DropdownMenuRadioItem value={String(Gender.FEMALE)}>
             {t(getGenderLabel(Gender.FEMALE))}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value={Gender.OTHER}>
+          <DropdownMenuRadioItem value={String(Gender.OTHER)}>
             {t(getGenderLabel(Gender.OTHER))}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>

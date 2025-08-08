@@ -1,10 +1,4 @@
-import {
-  GetMeResponse,
-  RegisterBody,
-  RegisterResponse,
-  SingInBody,
-  SingInResponse,
-} from "@/types/auth";
+import { RegisterBody, RegisterResponse, SingInBody, SingInResponse } from "@/types/auth";
 import { apiClient } from "./api-client";
 
 export const signIn = async (body: SingInBody) =>
@@ -12,8 +6,6 @@ export const signIn = async (body: SingInBody) =>
 
 export const register = async (body: RegisterBody) =>
   apiClient.post<RegisterResponse>("/auth/register", body);
-
-export const getMe = async () => apiClient.get<GetMeResponse>("/auth/me");
 
 export const signOut = async () => {
   const refreshToken = localStorage.getItem("refreshToken");

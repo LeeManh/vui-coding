@@ -1,13 +1,13 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { User } from "@/types/user";
+import { User } from "@/types/user.type";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/constants/query-keys";
-import { getMe, signOut } from "@/apis/auth";
 import { useRouter } from "next/navigation";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import { useLogoutMutation } from "@/mutations/auth";
+import { getMe } from "@/apis/users.api";
 
 interface AuthContextType {
   user: User | null;

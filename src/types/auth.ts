@@ -1,5 +1,4 @@
 import { SuccessRes } from "./common";
-import { User } from "./user";
 
 export interface SingInBody {
   email: string;
@@ -20,5 +19,3 @@ export type RegisterResponse = SuccessRes<{
   accessToken: string;
   refreshToken: string;
 }>;
-
-export type GetMeResponse = SuccessRes<User>;

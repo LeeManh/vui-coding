@@ -118,5 +118,8 @@
     "posts": "Bài viết",
     "series": "Series",
     "about": "About"
+  },
+  "messages": {
+    "updateSuccess": "Cập nhật thành công"
   }
 }

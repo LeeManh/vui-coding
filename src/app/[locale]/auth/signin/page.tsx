@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormMessage } from "@/components/shared/Form";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from "@/apis/auth";
+import { signIn } from "@/apis/auth.api";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/auth-context";

@@ -17,16 +17,18 @@ import { z } from "zod";
 import { Button } from "@/components/shared/Button";
 import DatePicker from "@/components/shared/date-picker/date-picker";
 import { SelectGender } from "@/components/shared/select-gender";
-import { Gender } from "@/constants/user";
 import { useAuth } from "@/contexts/auth-context";
 import { UploadAvatar } from "@/components/shared/upload-avatar";
+import { useMutation } from "@tanstack/react-query";
+import { updateMe } from "@/apis/users.api";
+import { toast } from "sonner";
 
 const defaultValues = {
   avatar: null,
   username: "",
   displayName: "",
-  birthday: undefined,
-  gender: undefined,
+  birthday: "",
+  gender: "",
 };
 
 const ProfileInfoPage = () => {
@@ -35,18 +37,10 @@ const ProfileInfoPage = () => {
 
   const FormSchema = z.object({
     avatar: z.string().nullable().optional(),
-    username: z
-      .string()
-      .min(1, { message: t("Validation.required", { field: t("Common.username") }) }),
-    displayName: z
-      .string()
-      .min(1, { message: t("Validation.required", { field: t("Common.displayName") }) }),
-    birthday: z.date({
-      message: t("Validation.required", { field: t("Common.birthday") }),
-    }),
-    gender: z.enum(Object.values(Gender), {
-      message: t("Validation.required", { field: t("Common.gender") }),
-    }),
+    username: z.string(),
+    displayName: z.string().min(3).optional(),
+    birthDay: z.date().optional(),
+    gender: z.string().nullable().optional(),
   });
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -54,17 +48,36 @@ const ProfileInfoPage = () => {
     defaultValues,
   });
 
+  const updateMeMutation = useMutation({ mutationFn: updateMe });
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { username, ...rest } = data;
+
+    updateMeMutation.mutate(
+      {
+        ...rest,
+        birthDay: rest.birthDay ? rest.birthDay.toISOString() : undefined,
+        gender: rest.gender ? Number(rest.gender) : undefined,
+      },
+      {
+        onSuccess: () => {
+          toast.success(t("messages.updateSuccess"));
+        },
+      }
+    );
+  }
+
   // set default value from username
   useEffect(() => {
     if (!user) return;
 
     form.setValue("username", user.username);
     form.setValue("avatar", user.avatar);
+    form.setValue("displayName", user.displayName ?? undefined);
+    form.setValue("birthDay", user.birthDay ? new Date(user.birthDay) : undefined);
+    form.setValue("gender", user.gender ? String(user.gender) : undefined);
   }, [user, form]);
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("data", data);
-  }
 
   return (
     <div className="profile-container">
@@ -106,9 +119,9 @@ const ProfileInfoPage = () => {
             name="displayName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel required>{t("Common.displayName")}</FormLabel>
+                <FormLabel>{t("Common.displayName")}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t("Common.displayName")} {...field} />
+                  <Input {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -117,15 +130,16 @@ const ProfileInfoPage = () => {
           <div className="flex items-start gap-4">
             <FormField
               control={form.control}
-              name="birthday"
+              name="birthDay"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel required>{t("Common.birthday")}</FormLabel>
+                  <FormLabel>{t("Common.birthday")}</FormLabel>
                   <FormControl>
                     <DatePicker
                       selected={field.value}
                       onSelect={field.onChange}
                       disabled={(date) => date > new Date()}
+                      placeholder=""
                     />
                   </FormControl>
                   <FormMessage />
@@ -137,9 +151,13 @@ const ProfileInfoPage = () => {
               name="gender"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel required>{t("Common.gender")}</FormLabel>
+                  <FormLabel>{t("Common.gender")}</FormLabel>
                   <FormControl>
-                    <SelectGender value={field.value as Gender} onChange={field.onChange} />
+                    <SelectGender
+                      value={field.value ?? ""}
+                      onChange={field.onChange}
+                      placeHolder=""
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -153,15 +171,19 @@ const ProfileInfoPage = () => {
               variant="outline"
               onClick={() =>
                 form.reset({
-                  ...defaultValues,
                   username: form.getValues("username"),
-                  avatar: user?.avatar ?? null,
+                  avatar: form.getValues("avatar"),
+                  displayName: form.getValues("displayName"),
+                  birthDay: form.getValues("birthDay"),
+                  gender: form.getValues("gender"),
                 })
               }
             >
               {t("Button.cancel")}
             </Button>
-            <Button type="submit">{t("Button.update")}</Button>
+            <Button type="submit" disabled={updateMeMutation.isPending}>
+              {t("Button.update")}
+            </Button>
           </div>
         </form>
       </Form>

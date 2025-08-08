@@ -8,9 +8,11 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import * as React from "react";
 
+type Selected = Date | undefined;
+
 type DatePickerProps = Pick<CalendarProps, "disabled"> & {
-  selected?: Date;
-  onSelect?: (date: Date | undefined) => void;
+  selected?: Selected;
+  onSelect?: (date: Selected) => void;
   placeholder?: string;
 };
 
@@ -20,9 +22,9 @@ export default function DatePicker({
   placeholder = "Pick a date",
   ...props
 }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date | undefined>(selected);
+  const [date, setDate] = React.useState<Selected>(selected);
 
-  const handleSelect = (newDate: Date | undefined) => {
+  const handleSelect = (newDate: Selected) => {
     setDate(newDate);
     onSelect?.(newDate);
   };
