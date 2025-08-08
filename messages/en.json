@@ -104,9 +104,17 @@
   "Metadata": {
     "home": {
       "title": "vui.coding | Home"
+    },
+    "series": {
+      "title": "vui.coding | Series"
     }
   },
   "Date": {
     "readingTime": "{readingTime} {readingTime, plural, =0 {minutes} one {minute} other {minutes}} read"
+  },
+  "navbar": {
+    "posts": "Posts",
+    "series": "Series",
+    "about": "About"
   }
 }

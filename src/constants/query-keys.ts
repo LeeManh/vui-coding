@@ -10,4 +10,7 @@ export const QUERY_KEYS = {
   TAGS: {
     ALL: "tags",
   },
+  SERIES: {
+    LIST: "series-list",
+  },
 };

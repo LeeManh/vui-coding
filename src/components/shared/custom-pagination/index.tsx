@@ -17,6 +17,8 @@ export const CustomPagination = ({
   className,
 }: CustomPaginationProps) => {
   const getVisiblePages = () => {
+    if (totalPages === 1) return [1];
+
     const delta = 2;
     const range = [];
     const rangeWithDots = [];
@@ -47,6 +49,7 @@ export const CustomPagination = ({
   };
 
   const visiblePages = getVisiblePages();
+  console.log("visiblePages", visiblePages); // [1, 1]?
 
   return (
     <div className={cn("flex items-center justify-center gap-1", className)}>

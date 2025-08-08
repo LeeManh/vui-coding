@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { AvatarUser } from "@/components/shared/avatar-user";
 import { Post } from "@/types/post.type";
 import { Eye, Bookmark, MessageCircle, Link as LinkIcon } from "lucide-react";
@@ -12,17 +12,26 @@ import { calculateReadingTime } from "@/lib/reading-time";
 import { useTranslations } from "next-intl";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../Tooltip";
 import TagBadge from "../tags/TagBadge";
+import { Series } from "@/types/series.type";
 
 interface PostCardProps {
-  post: Post;
+  post: Post | Series;
   className?: string;
+  isSeries?: boolean;
 }
 
-export const PostCard = ({ post, className }: PostCardProps) => {
+export const PostCard = ({ post, className, isSeries }: PostCardProps) => {
   const t = useTranslations();
 
+  const href = useMemo(
+    () => (isSeries ? ROUTE_PATHS.SERIES.DETAIL(post.id) : ROUTE_PATHS.POST.DETAIL(post.id)),
+    [isSeries, post.id]
+  );
+
+  console.log("href", href);
+
   return (
-    <Link href={ROUTE_PATHS.POST.DETAIL(post.id)} className="block">
+    <Link href={href} className="block">
       <div className={cn("flex gap-3 py-4 px-2", className)}>
         <AvatarUser avatar={post.author.avatar} username={post.author.username} />
 

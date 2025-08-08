@@ -2,11 +2,7 @@ import { PostStatus, PostVisibility } from "@/constants/post";
 import { MetaData, QueryParams, SuccessRes } from "./common";
 import { Author } from "./user";
 import { ReactionType } from "./like.type";
-
-export interface Tag {
-  id: string;
-  name: string;
-}
+import { Tag } from "./tag";
 
 // Main Post interface
 export interface Post {

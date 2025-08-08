@@ -19,7 +19,7 @@ const MainLayout = (props: MainLayoutProps) => {
       {showHeader && <MainHeader />}
       {showNavbar && <Navbar />}
 
-      <main className={cn("pt-6 flex-1")}>
+      <main className={cn("py-6 flex-1")}>
         <div className="app-container">{children}</div>
       </main>
 

@@ -21,4 +21,9 @@ export const ROUTE_PATHS = {
   DASHBOARD: {
     ROOT: "/dashboard",
   },
+  SERIES: {
+    ROOT: "/series",
+    DETAIL: (id: string) => `/series/${id}`,
+  },
+  ABOUT: "/about",
 } as const;

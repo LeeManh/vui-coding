@@ -106,9 +106,17 @@
   "Metadata": {
     "home": {
       "title": "vui.coding | Trang chủ"
+    },
+    "series": {
+      "title": "vui.coding | Series"
     }
   },
   "Date": {
     "readingTime": "{readingTime} phút đọc"
+  },
+  "navbar": {
+    "posts": "Bài viết",
+    "series": "Series",
+    "about": "About"
   }
 }
