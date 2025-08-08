@@ -9,13 +9,14 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 import { CommentTargetType } from "@/constants/comment.constant";
 
 interface CommentFormProps {
-  postId: string;
+  targetId: string;
   parentId?: string;
   isReply?: boolean;
+  isSeries?: boolean;
   onCancel?: () => void;
 }
 
-const CommentForm = ({ postId, parentId, isReply, onCancel }: CommentFormProps) => {
+const CommentForm = ({ targetId, parentId, isReply, onCancel, isSeries }: CommentFormProps) => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [content, setContent] = useState("");
@@ -28,14 +29,19 @@ const CommentForm = ({ postId, parentId, isReply, onCancel }: CommentFormProps) 
     if (!content.trim()) return;
 
     await createCommentMutation.mutateAsync({
-      targetId: postId,
-      targetType: CommentTargetType.POST,
+      targetId: targetId,
+      targetType: isSeries ? CommentTargetType.SERIES : CommentTargetType.POST,
       content,
       parentId: isReply ? parentId! : undefined,
     });
 
-    await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.COMMENTS, postId] });
-    await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.DETAIL, postId] });
+    await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.COMMENTS, targetId] });
+
+    if (isSeries) {
+      await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SERIES.DETAIL, targetId] });
+    } else {
+      await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.POSTS.DETAIL, targetId] });
+    }
 
     // Reset form after successful submission
     handleCancel();

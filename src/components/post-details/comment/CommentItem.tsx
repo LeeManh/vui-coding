@@ -14,16 +14,20 @@ import { createLike } from "@/apis/like";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { LikeTargetType } from "@/constants/like";
 import { useLocale, useTranslations } from "next-intl";
+import _ from "lodash";
 
 interface CommentItemProps {
   comment: Comment;
   isReply?: boolean;
+  isSeries?: boolean;
 }
 
-const CommentItem = ({ comment, isReply }: CommentItemProps) => {
-  const queryClient = useQueryClient();
+const CommentItem = ({ comment, isReply, isSeries }: CommentItemProps) => {
   const t = useTranslations();
+  const queryClient = useQueryClient();
   const locale = useLocale();
+
+  const likeTargetType = LikeTargetType.COMMENT;
 
   const [showReplyForm, setShowReplyForm] = useState(false);
 
@@ -61,7 +65,7 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
               onClick={() => {
                 createLikeMutation.mutate({
                   targetId: comment.id,
-                  targetType: LikeTargetType.COMMENT,
+                  targetType: likeTargetType,
                 });
               }}
             >
@@ -82,7 +86,7 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
               onClick={() => {
                 createLikeMutation.mutate({
                   targetId: comment.id,
-                  targetType: LikeTargetType.COMMENT,
+                  targetType: likeTargetType,
                   isDislike: true,
                 });
               }}
@@ -114,10 +118,11 @@ const CommentItem = ({ comment, isReply }: CommentItemProps) => {
 
           {showReplyForm && (
             <CommentForm
-              postId={comment.targetId}
+              targetId={comment.targetId}
               parentId={comment.id}
               isReply
               onCancel={() => setShowReplyForm(false)}
+              isSeries={isSeries}
             />
           )}
         </div>

@@ -1,6 +1,6 @@
 export enum BookmarkTargetType {
   POST = 1,
-  COMMENT = 2,
+  SERIES = 2,
 }
 
 export const BookmarkStatus = {

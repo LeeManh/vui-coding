@@ -31,3 +31,4 @@ export interface Series {
 }
 
 export type GetListSeriesResponse = SuccessRes<Series[]> & { meta: MetaData };
+export type GetDetailSeriesResponse = SuccessRes<Series>;

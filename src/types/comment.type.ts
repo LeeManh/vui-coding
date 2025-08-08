@@ -20,7 +20,7 @@ export interface Comment {
   reaction: ReactionType;
 }
 
-export type GetCommentsPostRes = SuccessRes<Comment[]> & { meta: MetaData };
+export type GetCommentsRes = SuccessRes<Comment[]> & { meta: MetaData };
 
 export interface CreateCommentBody {
   targetId: string;

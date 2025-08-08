@@ -12,5 +12,6 @@ export const QUERY_KEYS = {
   },
   SERIES: {
     LIST: "series-list",
+    DETAIL: "series-detail",
   },
 };
