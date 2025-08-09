@@ -328,6 +328,7 @@ const DashboardTagsPage = () => {
       <Card className="p-4">
         {viewMode === "list" ? (
           <div className="space-y-3">
+            {/* Table Rows */}
             {filteredAndSortedTags.map((tag) => (
               <div
                 key={tag.id}
@@ -338,7 +339,7 @@ const DashboardTagsPage = () => {
                     className="w-4 h-4 rounded-full border-2 border-white shadow-sm"
                     style={{ backgroundColor: tag.color }}
                   ></div>
-                  <div>
+                  <div className="min-w-48">
                     <div className="font-medium flex items-center gap-2">
                       <span className="hover:text-primary cursor-pointer">#{tag.name}</span>
                       {tag.isPopular && (
@@ -352,12 +353,23 @@ const DashboardTagsPage = () => {
                 </div>
 
                 <div className="flex items-center gap-4 text-sm">
-                  <Badge variant="outline" className="text-xs h-6">
-                    {tag.category}
-                  </Badge>
-                  <span className="text-muted-foreground w-12 text-center">{tag.postCount}</span>
-                  <span className="text-muted-foreground w-12 text-center">{tag.seriesCount}</span>
-                  <span className="text-muted-foreground w-16 text-center">{tag.followers}</span>
+                  <div className="w-20 text-center">
+                    <Badge variant="outline" className="text-xs h-6">
+                      {tag.category}
+                    </Badge>
+                  </div>
+                  <div className="w-16 text-center">
+                    <span className="font-medium">{tag.postCount}</span>
+                    <div className="text-xs text-muted-foreground">bài</div>
+                  </div>
+                  <div className="w-16 text-center">
+                    <span className="font-medium">{tag.seriesCount}</span>
+                    <div className="text-xs text-muted-foreground">series</div>
+                  </div>
+                  <div className="w-20 text-center">
+                    <span className="font-medium">{tag.followers}</span>
+                    <div className="text-xs text-muted-foreground">người</div>
+                  </div>
 
                   <div className="flex items-center gap-2 w-20">
                     <div className="w-12 bg-muted rounded-full h-2">
@@ -366,10 +378,10 @@ const DashboardTagsPage = () => {
                         style={{ width: `${tag.popularityScore}%` }}
                       ></div>
                     </div>
-                    <span className="text-xs w-8">{tag.popularityScore}%</span>
+                    <span className="text-xs w-8 font-medium">{tag.popularityScore}%</span>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-26">
                     <Button variant="outline" size="sm" className="h-7 text-xs">
                       <Edit className="w-3 h-3 mr-1" />
                       Sửa
@@ -468,7 +480,7 @@ const DashboardTagsPage = () => {
           </div>
         )}
 
-        <div className="text-sm text-muted-foreground text-center py-4 border-t mt-4">
+        <div className="text-sm text-muted-foreground text-center py-4 border-t">
           Hiển thị {filteredAndSortedTags.length} trong tổng số {totalTags} tags
         </div>
       </Card>
