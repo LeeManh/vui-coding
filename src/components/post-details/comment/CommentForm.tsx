@@ -7,6 +7,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createComment } from "@/apis/comment.api";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { CommentTargetType } from "@/constants/comment.constant";
+import { getDisplayName } from "next/dist/shared/lib/utils";
+import { getUserDisplayName } from "@/lib/format";
 
 interface CommentFormProps {
   targetId: string;
@@ -54,7 +56,7 @@ const CommentForm = ({ targetId, parentId, isReply, onCancel, isSeries }: Commen
 
   return (
     <div className="flex gap-3">
-      <AvatarUser avatar={user?.avatar} username={user?.username} />
+      <AvatarUser avatar={user?.avatar} username={getUserDisplayName(user)} />
 
       <div className="flex-1 space-y-3">
         <Textarea

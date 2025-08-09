@@ -4,22 +4,29 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/shared/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
 
+type Avatar = string | File | null;
+
 interface UploadAvatarProps {
   username?: string;
-  avatar?: string | null;
-  onChange?: (avatar: string | null) => void;
+  avatar?: Avatar;
+  onChange?: (avatar: Avatar) => void;
 }
 
 export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarProps) {
-  const [avatarImage, setAvatarImage] = useState<string | null>(avatar ?? null);
+  const [avatarImage, setAvatarImage] = useState<Avatar>(avatar ?? null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const imageUrl = avatarImage
+    ? typeof avatarImage === "string"
+      ? avatarImage
+      : URL.createObjectURL(avatarImage as File)
+    : undefined;
 
   const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setAvatarImage(imageUrl);
-      onChange?.(imageUrl);
+      // const imageUrl = URL.createObjectURL(file);
+      setAvatarImage(file);
+      onChange?.(file);
     }
   };
 
@@ -42,7 +49,7 @@ export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarPr
     <div className="relative w-32 h-32 rounded-full">
       {avatarImage ? (
         <Avatar className="w-full h-full">
-          <AvatarImage src={avatarImage} className="object-cover" />
+          <AvatarImage src={imageUrl} className="object-cover" />
           <AvatarFallback>{username[0]?.toUpperCase()}</AvatarFallback>
         </Avatar>
       ) : (

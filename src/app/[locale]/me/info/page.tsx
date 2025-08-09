@@ -19,9 +19,11 @@ import DatePicker from "@/components/shared/date-picker/date-picker";
 import { SelectGender } from "@/components/shared/select-gender";
 import { useAuth } from "@/contexts/auth-context";
 import { UploadAvatar } from "@/components/shared/upload-avatar";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { updateMe } from "@/apis/users.api";
 import { toast } from "sonner";
+import { upload } from "@/apis/media.api";
+import { QUERY_KEYS } from "@/constants/query-keys";
 
 const defaultValues = {
   avatar: null,
@@ -34,9 +36,13 @@ const defaultValues = {
 const ProfileInfoPage = () => {
   const t = useTranslations();
   const { user } = useAuth();
+  const queryClient = useQueryClient();
 
   const FormSchema = z.object({
-    avatar: z.string().nullable().optional(),
+    avatar: z
+      .union([z.string(), z.instanceof(File)])
+      .nullable()
+      .optional(),
     username: z.string(),
     displayName: z.string().min(3).optional(),
     birthDay: z.date().optional(),
@@ -49,20 +55,31 @@ const ProfileInfoPage = () => {
   });
 
   const updateMeMutation = useMutation({ mutationFn: updateMe });
+  const uploadMediaMutation = useMutation({ mutationFn: upload });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { username, ...rest } = data;
+    const { username, avatar, ...rest } = data;
 
-    updateMeMutation.mutate(
+    let avatarUrl: string | undefined;
+
+    const isAvatarChanged = avatar && typeof avatar !== "string" && avatar instanceof File;
+    if (isAvatarChanged) {
+      const { data } = await uploadMediaMutation.mutateAsync(avatar);
+      avatarUrl = data.url;
+    }
+
+    await updateMeMutation.mutateAsync(
       {
         ...rest,
         birthDay: rest.birthDay ? rest.birthDay.toISOString() : undefined,
         gender: rest.gender ? Number(rest.gender) : undefined,
+        avatar: avatarUrl,
       },
       {
         onSuccess: () => {
           toast.success(t("messages.updateSuccess"));
+          queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ME.PROFILE] });
         },
       }
     );
@@ -77,7 +94,9 @@ const ProfileInfoPage = () => {
     form.setValue("displayName", user.displayName ?? undefined);
     form.setValue("birthDay", user.birthDay ? new Date(user.birthDay) : undefined);
     form.setValue("gender", user.gender ? String(user.gender) : undefined);
-  }, [user, form]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div className="profile-container">
@@ -178,10 +197,15 @@ const ProfileInfoPage = () => {
                   gender: form.getValues("gender"),
                 })
               }
+              className="w-32"
             >
               {t("Button.cancel")}
             </Button>
-            <Button type="submit" disabled={updateMeMutation.isPending}>
+            <Button
+              type="submit"
+              isLoading={uploadMediaMutation.isPending || updateMeMutation.isPending}
+              className="w-32"
+            >
               {t("Button.update")}
             </Button>
           </div>

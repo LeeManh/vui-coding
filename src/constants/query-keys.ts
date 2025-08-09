@@ -4,14 +4,14 @@ export const QUERY_KEYS = {
     DETAIL: "post-detail",
     COMMENTS: "post-comments",
   },
-  AUTH: {
-    ME: "me",
-  },
   TAGS: {
     ALL: "tags",
   },
   SERIES: {
     LIST: "series-list",
     DETAIL: "series-detail",
+  },
+  ME: {
+    PROFILE: "me-profile",
   },
 };

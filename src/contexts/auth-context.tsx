@@ -29,7 +29,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
   const { data: userData, isLoading: isLoadingUser } = useQuery({
-    queryKey: [QUERY_KEYS.AUTH.ME],
+    queryKey: [QUERY_KEYS.ME.PROFILE],
     queryFn: getMe,
     enabled: !!accessToken,
   });
@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.setItem("refreshToken", tokens.refreshToken);
 
     // Invalidate and refetch user data
-    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.AUTH.ME] });
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ME.PROFILE] });
   };
 
   const clearAuth = () => {
@@ -80,7 +80,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem("refreshToken");
 
     // Clear query cache
-    queryClient.removeQueries({ queryKey: [QUERY_KEYS.AUTH.ME] });
+    queryClient.removeQueries({ queryKey: [QUERY_KEYS.ME.PROFILE] });
   };
 
   const logout = async () => {

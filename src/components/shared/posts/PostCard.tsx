@@ -13,6 +13,7 @@ import { useTranslations } from "next-intl";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../Tooltip";
 import TagBadge from "../tags/TagBadge";
 import { Series } from "@/types/series.type";
+import { getUserDisplayName } from "@/lib/format";
 
 interface PostCardProps {
   post: Post | Series;
@@ -31,11 +32,11 @@ export const PostCard = ({ post, className, isSeries }: PostCardProps) => {
   return (
     <Link href={href} className="block">
       <div className={cn("flex gap-3 py-4 px-2", className)}>
-        <AvatarUser avatar={post.author.avatar} username={post.author.username} />
+        <AvatarUser avatar={post.author.avatar} username={getUserDisplayName(post.author)} />
 
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="text-foreground font-medium">{post.author.username}</span>
+            <span className="text-foreground font-medium">{getUserDisplayName(post.author)}</span>
             <span>{formatFullDate(post.createdAt)}</span>
             <span>
               {t("Date.readingTime", { readingTime: calculateReadingTime(post.content) })}

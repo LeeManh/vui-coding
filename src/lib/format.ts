@@ -6,6 +6,7 @@ import {
   UserActionTarget,
 } from "@/constants/actions";
 import { Gender } from "@/constants/user";
+import { User } from "@/types/user.type";
 
 export function getGenderLabel(gender: Gender) {
   return GENDER_LABELS[gender];
@@ -17,4 +18,10 @@ export function getActionLabel(action: UserAction) {
 
 export function getActionTargetTypeLabel(actionType: UserActionTarget) {
   return USER_ACTION_TARGET_LABELS[actionType];
+}
+
+export function getUserDisplayName(
+  user: Pick<User, "username" | "displayName"> | null | undefined
+) {
+  return user?.displayName ?? user?.username;
 }

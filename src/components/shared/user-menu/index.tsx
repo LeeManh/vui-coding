@@ -15,6 +15,7 @@ import { AvatarUser } from "@/components/shared/avatar-user";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { getUserDisplayName } from "@/lib/format";
 
 export const UserMenu = () => {
   const t = useTranslations("UserMenu");
@@ -25,11 +26,15 @@ export const UserMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild disabled={isLoadingUser}>
-        <AvatarUser avatar={user?.avatar} username={user?.username} className="cursor-pointer" />
+        <AvatarUser
+          avatar={user?.avatar}
+          username={getUserDisplayName(user)}
+          className="cursor-pointer"
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80" align="start">
         <div className="flex items-center gap-3 p-2 border-b ">
-          <AvatarUser avatar={user?.avatar} username={user?.username} />
+          <AvatarUser avatar={user?.avatar} username={getUserDisplayName(user)} />
           <div>
             <h3 className="text-sm">{user?.username}</h3>
             <p className="text-xs ">{user?.email}</p>

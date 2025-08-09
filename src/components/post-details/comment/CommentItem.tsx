@@ -15,6 +15,7 @@ import { QUERY_KEYS } from "@/constants/query-keys";
 import { LikeTargetType } from "@/constants/like";
 import { useLocale, useTranslations } from "next-intl";
 import _ from "lodash";
+import { getUserDisplayName } from "@/lib/format";
 
 interface CommentItemProps {
   comment: Comment;
@@ -43,11 +44,11 @@ const CommentItem = ({ comment, isReply, isSeries }: CommentItemProps) => {
       <div className="absolute left-4 top-10 bottom-0 w-[0.5px] h-[calc(100%-30px)] bg-gray-400" />
 
       <div className="flex gap-3">
-        <AvatarUser avatar={comment.user.avatar} username={comment.user.username} />
+        <AvatarUser avatar={comment.user.avatar} username={getUserDisplayName(comment.user)} />
 
         <div className="flex-1 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-sm">{comment.user.username}</span>
+            <span className="font-medium text-sm">{getUserDisplayName(comment.user)}</span>
             <span className="text-xs text-muted-foreground">
               {getTimeAgo(comment.createdAt, locale)}
             </span>
