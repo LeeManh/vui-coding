@@ -15,19 +15,22 @@ export default function ProfileLayout({
       <DashBoardSidebar />
 
       <section className="w-full">
-        <div className="w-full h-14 flex items-center p-4 border-b divide-x">
-          <div className="pr-3">
+        <div className="w-full h-12 flex items-center px-4 border-b border-gray-200/60 dark:border-gray-800/60">
+          <div className="flex items-center space-x-3">
             <SidebarTrigger />
+            <Link href={ROUTE_PATHS.HOME}>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
+              >
+                <Home className="w-3.5 h-3.5" />
+              </Button>
+            </Link>
           </div>
-
-          <Link href={ROUTE_PATHS.HOME} className="px-3">
-            <Button variant="ghost" size="icon" className="size-7">
-              <Home className="w-4 h-4" />
-            </Button>
-          </Link>
         </div>
 
-        <div className="p-6">{children}</div>
+        <div className="p-4">{children}</div>
       </section>
     </SidebarProvider>
   );

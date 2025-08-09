@@ -15,13 +15,12 @@ import {
 } from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { Button } from "@/components/shared/Button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/Card";
+import { Card } from "@/components/shared/Card";
 import {
   KeyRound,
   Shield,
   Save,
   RotateCcw,
-  Lock,
   Eye,
   EyeOff,
   AlertTriangle,
@@ -67,173 +66,133 @@ const ProfilePagePassword = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      {/* Header Section */}
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
-          <KeyRound className="w-8 h-8 text-primary" />
+    <div className="max-w-2xl mx-auto space-y-4">
+      {/* Header - Minimal */}
+      <div className="mb-6">
+        <h1 className="text-lg font-semibold text-foreground flex items-center gap-2">
+          <KeyRound className="w-4 h-4" />
           {t("Profile.changePassword")}
         </h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          {t("Profile.passwordDescription")}
-        </p>
+        <p className="text-sm text-muted-foreground">{t("Profile.passwordDescription")}</p>
       </div>
 
-      {/* Security Guidelines */}
-      <Card className="border-2 border-blue-200 bg-blue-50/50 dark:bg-blue-900/10 dark:border-blue-800">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-blue-800 dark:text-blue-400">
-            <Shield className="w-5 h-5" />
-            Hướng dẫn tạo mật khẩu mạnh
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-sm">Ít nhất 8 ký tự</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-sm">Có chữ hoa và chữ thường</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-sm">Chứa số và ký tự đặc biệt</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-sm">Không sử dụng thông tin cá nhân</span>
-            </div>
+      {/* Security Guidelines - Compact */}
+      <Card className="p-4 border border-blue-200 dark:border-blue-800 bg-blue-50/30 dark:bg-blue-900/10">
+        <h3 className="text-sm font-medium mb-3 flex items-center gap-2">
+          <Shield className="w-4 h-4" />
+          Yêu cầu mật khẩu
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-3 h-3 text-green-600" />
+            <span>Ít nhất 6 ký tự</span>
           </div>
-        </CardContent>
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-3 h-3 text-green-600" />
+            <span>Có chữ và số</span>
+          </div>
+        </div>
       </Card>
 
-      {/* Security Warning */}
-      <Card className="border-2 border-orange-200 bg-orange-50/50 dark:bg-orange-900/10 dark:border-orange-800">
-        <CardContent className="pt-6">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-              <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-            </div>
-            <div className="space-y-2">
-              <h3 className="font-semibold text-orange-800 dark:text-orange-400">
-                Lưu ý quan trọng
-              </h3>
-              <p className="text-sm text-orange-700 dark:text-orange-300">
-                Sau khi thay đổi mật khẩu, bạn sẽ cần đăng nhập lại trên tất cả thiết bị. Hãy chắc
-                chắn bạn nhớ mật khẩu mới trước khi thay đổi.
-              </p>
-            </div>
+      {/* Warning - Compact */}
+      <Card className="p-3 border border-orange-200 dark:border-orange-800 bg-orange-50/30 dark:bg-orange-900/10">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className="w-4 h-4 text-orange-600 mt-0.5" />
+          <div>
+            <p className="text-xs text-orange-700 dark:text-orange-300">
+              Sau khi đổi mật khẩu, bạn sẽ cần đăng nhập lại trên tất cả thiết bị.
+            </p>
           </div>
-        </CardContent>
+        </div>
       </Card>
 
-      {/* Change Password Form */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-xl">
-            <Lock className="w-5 h-5" />
-            Đổi mật khẩu
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base font-medium">
-                      {t("Common.newPassword")}
-                    </FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Nhập mật khẩu mới"
-                          {...field}
-                          className="pl-10 pr-10 h-12 focus:ring-2 focus:ring-primary/20 border-2"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                        >
-                          {showPassword ? (
-                            <EyeOff className="w-4 h-4" />
-                          ) : (
-                            <Eye className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      {/* Form - Simplified */}
+      <Card className="p-4">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm">{t("Common.newPassword")}</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Mật khẩu mới"
+                        {...field}
+                        className="pr-10 h-9 text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      >
+                        {showPassword ? (
+                          <EyeOff className="w-3.5 h-3.5" />
+                        ) : (
+                          <Eye className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base font-medium">
-                      {t("Common.confirmPassword")}
-                    </FormLabel>
-                    <FormControl>
-                      <div className="relative">
-                        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input
-                          type={showConfirmPassword ? "text" : "password"}
-                          placeholder="Nhập lại mật khẩu mới"
-                          {...field}
-                          className="pl-10 pr-10 h-12 focus:ring-2 focus:ring-primary/20 border-2"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                        >
-                          {showConfirmPassword ? (
-                            <EyeOff className="w-4 h-4" />
-                          ) : (
-                            <Eye className="w-4 h-4" />
-                          )}
-                        </button>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm">{t("Common.confirmPassword")}</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <Input
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Nhập lại mật khẩu mới"
+                        {...field}
+                        className="pr-10 h-9 text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      >
+                        {showConfirmPassword ? (
+                          <EyeOff className="w-3.5 h-3.5" />
+                        ) : (
+                          <Eye className="w-3.5 h-3.5" />
+                        )}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              {/* Action Buttons */}
-              <div className="pt-4 border-t">
-                <div className="flex flex-col sm:flex-row justify-end gap-4">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => form.reset()}
-                    className="w-full sm:w-40 h-11 border-2"
-                  >
-                    <RotateCcw className="w-4 h-4 mr-2" />
-                    {t("Button.cancel")}
-                  </Button>
-                  <Button
-                    type="submit"
-                    className="w-full sm:w-40 h-11 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
-                  >
-                    <Save className="w-4 h-4 mr-2" />
-                    {t("Button.update")}
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </Form>
-        </CardContent>
+            {/* Buttons - Minimal */}
+            <div className="flex justify-end gap-2 pt-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => form.reset()}
+                size="sm"
+                className="h-8 px-3"
+              >
+                <RotateCcw className="w-3 h-3 mr-1" />
+                {t("Button.cancel")}
+              </Button>
+              <Button type="submit" size="sm" className="h-8 px-3">
+                <Save className="w-3 h-3 mr-1" />
+                {t("Button.update")}
+              </Button>
+            </div>
+          </form>
+        </Form>
       </Card>
     </div>
   );

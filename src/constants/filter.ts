@@ -4,4 +4,4 @@ export enum SortType {
   COMMUNITY = "community",
 }
 
-export const DEFAULT_PAGE_LIMIT = 10;
+export const DEFAULT_PAGE_LIMIT = 12;

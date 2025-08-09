@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/shared/Button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/shared/Card";
+import { Card } from "@/components/shared/Card";
 import DatePicker from "@/components/shared/date-picker/date-picker";
 import { SelectGender } from "@/components/shared/select-gender";
 import { useAuth } from "@/contexts/auth-context";
@@ -25,7 +25,7 @@ import { updateMe } from "@/apis/users.api";
 import { toast } from "sonner";
 import { upload } from "@/apis/media.api";
 import { QUERY_KEYS } from "@/constants/query-keys";
-import { User, Save, RotateCcw } from "lucide-react";
+import { Save, RotateCcw } from "lucide-react";
 
 const defaultValues = {
   avatar: null,
@@ -93,24 +93,18 @@ const ProfileInfoPage = () => {
   }, [user?.id]);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
-      {/* Header Section */}
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-foreground">{t("Profile.personalInfo")}</h1>
-        <p className="text-muted-foreground text-lg">{t("Profile.description")}</p>
+    <div className="max-w-2xl mx-auto space-y-4">
+      {/* Header - Minimal */}
+      <div className="mb-6">
+        <h1 className="text-lg font-semibold text-foreground">{t("Profile.personalInfo")}</h1>
+        <p className="text-sm text-muted-foreground">{t("Profile.description")}</p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {/* Avatar Section */}
-          <Card>
-            <CardHeader className="text-center">
-              <CardTitle className="flex items-center justify-center gap-2 text-xl">
-                <User className="w-5 h-5" />
-                Ảnh đại diện
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex justify-center pb-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {/* Avatar Section - Compact */}
+          <Card className="p-4">
+            <div className="flex items-center gap-4">
               <FormField
                 control={form.control}
                 name="avatar"
@@ -134,33 +128,33 @@ const ProfileInfoPage = () => {
                   </FormItem>
                 )}
               />
-            </CardContent>
+              <div>
+                <h3 className="text-sm font-medium">Ảnh đại diện</h3>
+                <p className="text-xs text-muted-foreground">Nhấp để thay đổi</p>
+              </div>
+            </div>
           </Card>
 
-          {/* Personal Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-xl">
-                <User className="w-5 h-5" />
-                Thông tin cá nhân
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Personal Information - Simplified */}
+          <Card className="p-4 space-y-4">
+            <h3 className="text-sm font-medium border-b border-gray-200 dark:border-gray-800 pb-2">
+              Thông tin cá nhân
+            </h3>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-medium">
-                        {t("Common.username")}
-                      </FormLabel>
+                      <FormLabel className="text-sm">{t("Common.username")}</FormLabel>
                       <FormControl>
                         <Input
                           placeholder={t("Common.username")}
                           {...field}
                           disabled
-                          className="bg-muted/50"
+                          className="bg-muted/50 text-sm h-9"
                         />
                       </FormControl>
                       <FormMessage />
@@ -173,15 +167,9 @@ const ProfileInfoPage = () => {
                   name="displayName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-medium">
-                        {t("Common.displayName")}
-                      </FormLabel>
+                      <FormLabel className="text-sm">{t("Common.displayName")}</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="Nhập tên hiển thị của bạn"
-                          {...field}
-                          className="focus:ring-2 focus:ring-primary/20"
-                        />
+                        <Input placeholder="Tên hiển thị" {...field} className="text-sm h-9" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -189,15 +177,13 @@ const ProfileInfoPage = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
                   name="birthDay"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-medium">
-                        {t("Common.birthday")}
-                      </FormLabel>
+                      <FormLabel className="text-sm">{t("Common.birthday")}</FormLabel>
                       <FormControl>
                         <DatePicker
                           selected={field.value}
@@ -216,7 +202,7 @@ const ProfileInfoPage = () => {
                   name="gender"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base font-medium">{t("Common.gender")}</FormLabel>
+                      <FormLabel className="text-sm">{t("Common.gender")}</FormLabel>
                       <FormControl>
                         <SelectGender
                           value={field.value ?? ""}
@@ -229,41 +215,39 @@ const ProfileInfoPage = () => {
                   )}
                 />
               </div>
-            </CardContent>
+            </div>
           </Card>
 
-          {/* Action Buttons */}
-          <Card className="bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
-            <CardContent className="pt-6">
-              <div className="flex flex-col sm:flex-row justify-end gap-4">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() =>
-                    form.reset({
-                      username: form.getValues("username"),
-                      avatar: form.getValues("avatar"),
-                      displayName: form.getValues("displayName"),
-                      birthDay: form.getValues("birthDay"),
-                      gender: form.getValues("gender"),
-                    })
-                  }
-                  className="w-full sm:w-40 h-11 border-2"
-                >
-                  <RotateCcw className="w-4 h-4 mr-2" />
-                  {t("Button.cancel")}
-                </Button>
-                <Button
-                  type="submit"
-                  isLoading={updateMeMutation.isPending}
-                  className="w-full sm:w-40 h-11 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
-                >
-                  <Save className="w-4 h-4 mr-2" />
-                  {t("Button.update")}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {/* Action Buttons - Minimal */}
+          <div className="flex justify-end gap-2 pt-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() =>
+                form.reset({
+                  username: form.getValues("username"),
+                  avatar: form.getValues("avatar"),
+                  displayName: form.getValues("displayName"),
+                  birthDay: form.getValues("birthDay"),
+                  gender: form.getValues("gender"),
+                })
+              }
+              size="sm"
+              className="h-8 px-3"
+            >
+              <RotateCcw className="w-3 h-3 mr-1" />
+              {t("Button.cancel")}
+            </Button>
+            <Button
+              type="submit"
+              isLoading={updateMeMutation.isPending}
+              size="sm"
+              className="h-8 px-3"
+            >
+              <Save className="w-3 h-3 mr-1" />
+              {t("Button.update")}
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
