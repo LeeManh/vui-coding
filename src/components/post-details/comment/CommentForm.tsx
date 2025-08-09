@@ -7,7 +7,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createComment } from "@/apis/comment.api";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { CommentTargetType } from "@/constants/comment.constant";
-import { getDisplayName } from "next/dist/shared/lib/utils";
 import { getUserDisplayName } from "@/lib/format";
 
 interface CommentFormProps {
@@ -22,6 +21,8 @@ const CommentForm = ({ targetId, parentId, isReply, onCancel, isSeries }: Commen
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [content, setContent] = useState("");
+
+  console.log("targetId", targetId);
 
   const createCommentMutation = useMutation({
     mutationFn: createComment,

@@ -14,7 +14,7 @@ const PostDetailPage = ({ params }: PostDetailPageProps) => {
     <div>
       <PostDetailsSection postId={postId} />
       <Divider className="my-4" />
-      <CommentsSection postId={postId} />
+      <CommentsSection targetId={postId} />
     </div>
   );
 };

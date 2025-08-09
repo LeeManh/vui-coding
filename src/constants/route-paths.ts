@@ -6,7 +6,8 @@ export const ROUTE_PATHS = {
   },
   ARCHIVE: "/archive",
   ME: {
-    ROOT: "/me/info",
+    ROOT: "/me",
+    OVERVIEW: "/me",
     INFO: "/me/info",
     EMAIL: "/me/email",
     PASSWORD: "/me/password",

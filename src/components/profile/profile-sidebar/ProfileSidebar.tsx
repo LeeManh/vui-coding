@@ -14,6 +14,7 @@ import {
   Mail,
   Pen,
   User,
+  LayoutDashboard,
 } from "lucide-react";
 import { Item, ProfileMainMenu } from "./ProfileMainMenu";
 import { ROUTE_PATHS } from "@/constants/route-paths";
@@ -26,6 +27,11 @@ export const ProfileSidebar = ({ ...props }: ProfileSidebarProps) => {
 
   const data: Record<string, Item[]> = {
     navMain: [
+      {
+        title: t("dashboard"),
+        icon: LayoutDashboard,
+        url: ROUTE_PATHS.ME.OVERVIEW,
+      },
       {
         title: t("info"),
         icon: IdCard,

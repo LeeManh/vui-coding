@@ -81,14 +81,16 @@
     "invalidEmail": "Invalid email"
   },
   "UserAction": {
-    "all": "All activities",
+    "all": "All",
     "bookmark": "Bookmark",
     "deleteBookmark": "Delete bookmark",
     "upvote": "Upvote",
     "downvote": "Downvote",
     "unvote": "Unvote",
     "accept": "Accept",
-    "delete": "Delete"
+    "delete": "Delete",
+    "undoUpvote": "Undo upvote",
+    "undoDownvote": "Undo downvote"
   },
   "UserActionTarget": {
     "all": "All types",
@@ -116,5 +118,8 @@
     "posts": "Posts",
     "series": "Series",
     "about": "About"
+  },
+  "messages": {
+    "updateSuccess": "Update successful"
   }
 }

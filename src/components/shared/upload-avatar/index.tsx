@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Button } from "@/components/shared/Button";
 import { Avatar, AvatarFallback, AvatarImage } from "../Avatar";
 
@@ -10,21 +10,39 @@ interface UploadAvatarProps {
   username?: string;
   avatar?: Avatar;
   onChange?: (avatar: Avatar) => void;
+  isLoading?: boolean;
 }
 
-export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarProps) {
+export function UploadAvatar(props: UploadAvatarProps) {
+  const { avatar, onChange, username = "", isLoading = false } = props;
+
   const [avatarImage, setAvatarImage] = useState<Avatar>(avatar ?? null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const imageUrl = avatarImage
-    ? typeof avatarImage === "string"
-      ? avatarImage
-      : URL.createObjectURL(avatarImage as File)
-    : undefined;
+  const objectUrlRef = useRef<string | null>(null);
+
+  const imageUrl = useMemo(() => {
+    if (!avatarImage) return undefined;
+
+    if (typeof avatarImage === "string") {
+      // Clean up previous object URL if exists
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+        objectUrlRef.current = null;
+      }
+      return avatarImage;
+    }
+
+    // Create new object URL for File
+    if (objectUrlRef.current) {
+      URL.revokeObjectURL(objectUrlRef.current);
+    }
+    objectUrlRef.current = URL.createObjectURL(avatarImage as File);
+    return objectUrlRef.current;
+  }, [avatarImage]);
 
   const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // const imageUrl = URL.createObjectURL(file);
       setAvatarImage(file);
       onChange?.(file);
     }
@@ -33,6 +51,12 @@ export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarPr
   const handleAvatarDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
+    // Clean up object URL if exists
+    if (objectUrlRef.current) {
+      URL.revokeObjectURL(objectUrlRef.current);
+      objectUrlRef.current = null;
+    }
+
     setAvatarImage(null);
     onChange?.(null);
 
@@ -40,14 +64,26 @@ export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarPr
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // sync avatar with avatarImage
+  // sync avatar with avatarImage - only when it's actually different
   useEffect(() => {
-    setAvatarImage(avatar ?? null);
-  }, [avatar]);
+    const nextAvatar = avatar ?? null;
+    if (nextAvatar !== avatarImage) {
+      setAvatarImage(nextAvatar);
+    }
+  }, [avatar, avatarImage]);
+
+  // Cleanup object URL on unmount
+  useEffect(() => {
+    return () => {
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="relative w-32 h-32 rounded-full">
-      {avatarImage ? (
+      {imageUrl ? (
         <Avatar className="w-full h-full">
           <AvatarImage src={imageUrl} className="object-cover" />
           <AvatarFallback>{username[0]?.toUpperCase()}</AvatarFallback>
@@ -58,15 +94,28 @@ export function UploadAvatar({ avatar, onChange, username = "" }: UploadAvatarPr
         </div>
       )}
 
-      <label htmlFor="avatar-upload" className="absolute inset-0 cursor-pointer group">
+      {/* Loading overlay */}
+      {isLoading && (
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center rounded-full z-20">
+          <div className="animate-spin rounded-full h-8 w-8 border-3 border-white border-t-transparent"></div>
+        </div>
+      )}
+
+      <label
+        htmlFor="avatar-upload"
+        className={`absolute inset-0 cursor-pointer group ${
+          isLoading ? "pointer-events-none" : ""
+        }`}
+      >
         <input
           id="avatar-upload"
           ref={fileInputRef}
           type="file"
           className="sr-only"
           onChange={handleAvatarUpload}
+          disabled={isLoading}
         />
-        {avatarImage && (
+        {avatarImage && !isLoading && (
           <div className="absolute -top-1 -right-1 flex items-center justify-center">
             <Button
               variant="outline"
