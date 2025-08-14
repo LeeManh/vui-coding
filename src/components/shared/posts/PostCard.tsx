@@ -9,10 +9,10 @@ import { formatFullDate } from "@/lib/date";
 import { ROUTE_PATHS } from "@/constants/route-paths";
 import Link from "next/link";
 import { calculateReadingTime } from "@/lib/reading-time";
-import TagBadge from "../tags/TagBadge";
 import { Series } from "@/types/series.type";
 import { getUserDisplayName } from "@/lib/format";
 import Image from "next/image";
+import { Badge } from "../Badge";
 
 interface PostCardProps {
   post: Post | Series;
@@ -85,12 +85,7 @@ export const PostCard = ({ post, className, isSeries }: PostCardProps) => {
           {post.tags.length > 0 && (
             <div className="flex items-center gap-1.5 flex-wrap">
               {post.tags.slice(0, 2).map((tag) => (
-                <TagBadge
-                  key={tag.id}
-                  className="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 border-0"
-                >
-                  {tag.name}
-                </TagBadge>
+                <Badge key={tag.id}>{tag.name}</Badge>
               ))}
               {post.tags.length > 2 && (
                 <span className="text-xs text-muted-foreground">+{post.tags.length - 2}</span>

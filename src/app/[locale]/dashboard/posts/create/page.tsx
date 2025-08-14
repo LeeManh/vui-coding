@@ -14,13 +14,21 @@ import { Card } from "@/components/shared/Card";
 import { Button } from "@/components/shared/Button";
 import { Input } from "@/components/shared/Input";
 import { Textarea } from "@/components/shared/Textarea";
-import { Select, SelectTrigger, SelectValue } from "@/components/shared/Select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shared/Select";
 import { Calendar } from "@/components/shared/Calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/shared/Popover";
 import Link from "next/link";
 import { Upload } from "@/components/shared/upload";
 import { ACCEPTED_FILE_TYPES, FileType, MAX_FILE_SIZE } from "@/constants/file.constant";
 import { SimpleEditor } from "@/components/tiptap/tiptap-templates/simple/simple-editor";
+import { MultiSelectWithCreate } from "@/components/shared/multi-select/MultiSelectWithCreate";
 
 const CreatePostPage = () => {
   return (
@@ -67,7 +75,8 @@ const CreatePostPage = () => {
                 <Card className="p-4">
                   <Input
                     placeholder="Nhập tiêu đề bài viết..."
-                    className="text-xl font-semibold border-none shadow-none p-0 focus-visible:ring-0 placeholder:text-muted-foreground/60"
+                    className="text-xl font-semibold p-0 placeholder:text-muted-foreground/60 h-full rounded-none"
+                    hideBorder
                   />
                 </Card>
 
@@ -115,8 +124,15 @@ const CreatePostPage = () => {
                       <label className="text-sm text-muted-foreground mb-2 block">Hiển thị</label>
                       <Select>
                         <SelectTrigger className="w-full">
-                          <SelectValue />
+                          <SelectValue placeholder="Chọn hiển thị..." />
                         </SelectTrigger>
+
+                        <SelectContent>
+                          <SelectGroup>
+                            <SelectItem value="private">Riêng tư</SelectItem>
+                            <SelectItem value="public">Công khai</SelectItem>
+                          </SelectGroup>
+                        </SelectContent>
                       </Select>
                     </div>
 
@@ -153,7 +169,21 @@ const CreatePostPage = () => {
                     <div>
                       <label className="text-sm text-muted-foreground mb-2 block">Series</label>
                       <div className="flex gap-2">
-                        <div className="flex-1 min-w-0">Select</div>
+                        <div className="flex-1 min-w-0">
+                          <Select>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Chọn series..." />
+                            </SelectTrigger>
+
+                            <SelectContent>
+                              <SelectGroup>
+                                <SelectItem value="series-1">Series 1</SelectItem>
+                                <SelectItem value="series-2">Series 2</SelectItem>
+                                <SelectItem value="series-3">Series 3</SelectItem>
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -165,7 +195,12 @@ const CreatePostPage = () => {
                     <Tags className="w-4 h-4" />
                     Thẻ tags
                   </h3>
-                  <div className="space-y-3"></div>
+                  <div className="space-y-3">
+                    <MultiSelectWithCreate
+                      initialItems={["React", "Vue.js", "Angular", "JavaScript", "TypeScript"]}
+                      placeholder="Chọn thẻ tags..."
+                    />
+                  </div>
                 </Card>
 
                 {/* SEO */}

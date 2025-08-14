@@ -1,7 +1,7 @@
 import { Tag } from "@/types/tag";
 import React from "react";
 import TagBadgeSkeleton from "./TagBadgeSkeleton";
-import TagBadge from "./TagBadge";
+import { Badge } from "../Badge";
 
 interface ListTagsProps {
   tags?: Tag[];
@@ -21,7 +21,7 @@ const ListTags = ({ tags, isLoading, numberSkeleton = 5 }: ListTagsProps) => {
       ) : (
         <>
           {tags?.map((tag) => (
-            <TagBadge key={tag.id}>{tag.name}</TagBadge>
+            <Badge key={tag.id}>{tag.name}</Badge>
           ))}
         </>
       )}
