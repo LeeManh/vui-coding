@@ -1,3 +1,5 @@
+import type { DropzoneInputProps, DropzoneRootProps } from "react-dropzone";
+
 export interface FileUploadOptions {
   maxFiles?: number;
   acceptedFileTypes?: string[];
@@ -20,7 +22,7 @@ export interface FileUploadContextType {
   addFiles: (newFiles: File[]) => void;
   removeFile: (fileId: string) => void;
   clearFiles: () => void;
-  getRootProps: () => unknown;
-  getInputProps: () => unknown;
+  getRootProps: (props?: DropzoneRootProps) => DropzoneRootProps;
+  getInputProps: (props?: DropzoneInputProps) => DropzoneInputProps;
   open: () => void;
 }

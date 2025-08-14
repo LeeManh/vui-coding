@@ -93,12 +93,19 @@ const CreatePostPage = () => {
                     placeholder="Viết mô tả ngắn cho bài viết..."
                     maxLength={200}
                     showCharCount
+                    className="h-44"
                   />
                 </Card>
 
                 {/* Content Editor */}
                 <Card className="p-4">
                   <h3 className="text-sm font-medium mb-4">Nội dung</h3>
+                  <Textarea
+                    placeholder="Viết mô tả ngắn cho bài viết..."
+                    maxLength={200}
+                    showCharCount
+                    className="h-44"
+                  />
                 </Card>
               </div>
 
@@ -114,10 +121,6 @@ const CreatePostPage = () => {
                         <SelectTrigger className="w-full">
                           <SelectValue />
                         </SelectTrigger>
-                        {/* <SelectContent>
-                          <SelectItem value={PostVisibility.PUBLIC}>Công khai</SelectItem>
-                          <SelectItem value={PostVisibility.PRIVATE}>Riêng tư</SelectItem>
-                        </SelectContent> */}
                       </Select>
                     </div>
 
