@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import "@/styles/_variables.scss";
+import "@/styles/_keyframe-animations.scss";
 
 export const metadata: Metadata = {
   title: "vui.coding",
@@ -15,7 +16,6 @@ export const metadata: Metadata = {
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
-  // variable: "--font-roboto",
 });
 
 interface RootLayoutProps {

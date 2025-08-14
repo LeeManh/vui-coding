@@ -20,6 +20,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/shared/Pop
 import Link from "next/link";
 import { Upload } from "@/components/shared/upload";
 import { ACCEPTED_FILE_TYPES, FileType, MAX_FILE_SIZE } from "@/constants/file.constant";
+import { SimpleEditor } from "@/components/tiptap/tiptap-templates/simple/simple-editor";
 
 const CreatePostPage = () => {
   return (
@@ -100,12 +101,7 @@ const CreatePostPage = () => {
                 {/* Content Editor */}
                 <Card className="p-4">
                   <h3 className="text-sm font-medium mb-4">Nội dung</h3>
-                  <Textarea
-                    placeholder="Viết mô tả ngắn cho bài viết..."
-                    maxLength={200}
-                    showCharCount
-                    className="h-44"
-                  />
+                  <SimpleEditor />
                 </Card>
               </div>
 
