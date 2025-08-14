@@ -30,7 +30,7 @@ const PostDetailsSection = ({ postId }: PostDetailsSectionProps) => {
       <Divider className="my-4" />
       <PostActionBar data={post} />
       <Divider className="my-4" />
-      <div className="space-y-4 font-mono text-lg">
+      <div className="space-y-4 text-lg">
         <div dangerouslySetInnerHTML={{ __html: post?.content || "" }} />
       </div>
     </section>

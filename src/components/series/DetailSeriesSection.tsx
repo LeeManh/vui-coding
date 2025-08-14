@@ -28,7 +28,7 @@ const DetailSeriesSection = ({ seriesId }: DetailSeriesSectionProps) => {
       <Divider className="my-4" />
       <PostActionBar data={data.data} isSeries />
       <Divider className="my-4" />
-      <div className="space-y-4 font-mono text-lg">
+      <div className="space-y-4  text-lg">
         <div dangerouslySetInnerHTML={{ __html: data.data.content || "" }} />
       </div>
     </div>

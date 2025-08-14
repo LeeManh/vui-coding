@@ -139,7 +139,7 @@ const CreateTagPage = () => {
                   />
                   {name && (
                     <p className="text-xs text-muted-foreground mt-1">
-                      Tag sẽ hiển thị: <span className="font-mono">#{name}</span>
+                      Tag sẽ hiển thị: <span className="">#{name}</span>
                     </p>
                   )}
                 </div>
@@ -162,11 +162,11 @@ const CreateTagPage = () => {
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
                     disabled={autoSlug}
-                    className={`h-9 font-mono ${!isValidSlug && slug ? "border-red-500" : ""}`}
+                    className={`h-9  ${!isValidSlug && slug ? "border-red-500" : ""}`}
                   />
                   <div className="flex items-center justify-between mt-1">
                     <p className="text-xs text-muted-foreground">
-                      URL: <span className="font-mono text-blue-600">/tags/{slug}</span>
+                      URL: <span className=" text-blue-600">/tags/{slug}</span>
                     </p>
                     {slug && (
                       <div className="flex items-center gap-1">
@@ -234,7 +234,7 @@ const CreateTagPage = () => {
                     value={color}
                     onChange={(e) => setColor(e.target.value)}
                     placeholder="#3B82F6"
-                    className="font-mono w-24 h-8 text-sm"
+                    className=" w-24 h-8 text-sm"
                   />
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-muted-foreground">Xem trước:</span>
@@ -360,7 +360,7 @@ const CreateTagPage = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Slug:</span>
-                  <span className="font-mono text-xs">{slug || "tag-slug"}</span>
+                  <span className=" text-xs">{slug || "tag-slug"}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Danh mục:</span>
