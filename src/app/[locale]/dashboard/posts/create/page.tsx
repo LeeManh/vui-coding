@@ -1,15 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Save,
-  Send,
-  Calendar as CalendarIcon,
-  Tags,
-  Image as ImageIcon,
-  FileText,
-  ArrowLeft,
-} from "lucide-react";
+import { Save, Send, Tags, Image as ImageIcon, FileText, ArrowLeft } from "lucide-react";
 import { Card } from "@/components/shared/Card";
 import { Button } from "@/components/shared/Button";
 import { Input } from "@/components/shared/Input";
@@ -22,13 +14,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/shared/Select";
-import { Calendar } from "@/components/shared/Calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/shared/Popover";
 import Link from "next/link";
 import { Upload } from "@/components/shared/upload";
 import { ACCEPTED_FILE_TYPES, FileType, MAX_FILE_SIZE } from "@/constants/file.constant";
 import { SimpleEditor } from "@/components/tiptap/tiptap-templates/simple/simple-editor";
 import { MultiSelectWithCreate } from "@/components/shared/multi-select/MultiSelectWithCreate";
+import { DateTimePicker } from "@/components/shared/datepicker/DateTimePicker";
 
 const CreatePostPage = () => {
   return (
@@ -140,24 +131,8 @@ const CreatePostPage = () => {
                       <label className="text-sm text-muted-foreground mb-2 block">
                         Lên lịch xuất bản
                       </label>
-                      <div className="flex gap-2">
-                        <Popover>
-                          <PopoverTrigger asChild>
-                            <Button
-                              variant="outline"
-                              className="flex-1 justify-start text-left font-normal"
-                              type="button"
-                            >
-                              <CalendarIcon className="mr-2 h-4 w-4" />
-                            </Button>
-                          </PopoverTrigger>
-                          <PopoverContent className="w-auto p-0" align="start">
-                            <div className="p-3 space-y-3">
-                              <Calendar mode="single" />
-                            </div>
-                          </PopoverContent>
-                        </Popover>
-                      </div>
+
+                      <DateTimePicker />
                     </div>
                   </div>
                 </Card>
